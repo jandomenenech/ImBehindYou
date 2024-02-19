@@ -151,7 +151,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45130763}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: d9a644406bf8ec5449f59e3fe0dcd140, type: 3}
   m_Controller: {fileID: 9100000, guid: 6727812ec67c34f41879d9b645b71c29, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -186,7 +186,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0

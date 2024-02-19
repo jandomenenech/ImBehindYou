@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float velocidad; // Velocidad del movimiento
+    public float velocidad; 
     private Rigidbody rb;
     private Animator animator;
 
@@ -21,20 +21,27 @@ public class PlayerMovement : MonoBehaviour
 
         bool caminando = Walk();
         Run(caminando);
+        gahterObject();
 
         Vector3 movimiento = new Vector3(movimientoHorizontal, 0.0f, movimientoVertical);
         rb.velocity = movimiento * velocidad;
 
         if (movimiento != Vector3.zero)
         {
-            // Calcular la rotación basada en la dirección del movimiento
             Quaternion nuevaRotacion = Quaternion.LookRotation(movimiento);
-            // Aplicar la rotación sólo en el eje Y (para mantener el personaje en posición vertical)
+            
             transform.rotation = Quaternion.Euler(0, nuevaRotacion.eulerAngles.y, 0);
         }
 
         animator.SetFloat("walk", velocidad);
+
     }
+
+
+
+
+
+    //Funciones
 
     public void Run(bool caminando)
     {
@@ -50,6 +57,10 @@ public class PlayerMovement : MonoBehaviour
         {
             velocidad = 0.5f;
         }
+        else if (Input.GetKey(KeyCode.LeftControl))
+        {
+            velocidad = 0.1f;
+        }
         else
         {
             velocidad = 0;
@@ -59,6 +70,19 @@ public class PlayerMovement : MonoBehaviour
     public bool Walk()
     {
         return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
+    }
+
+    public void gahterObject()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            animator.SetBool("PressE", true);
+        }
+        else
+        {
+            animator.SetBool("PressE", false);
+        }
+         
     }
 }
 
