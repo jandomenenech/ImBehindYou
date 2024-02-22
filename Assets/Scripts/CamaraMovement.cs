@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CamaraMovement : MonoBehaviour
 {
-    public Transform target; // Objeto a seguir
-    public float distance = 5.0f; // Distancia de la cámara al objetivo
-    public float height = 3.0f; // Altura de la cámara sobre el objetivo
-    public float smoothSpeed = 0.125f; // Velocidad de suavizado de la cámara
+    public Transform target; 
+    public float distance = 5.0f; 
+    public float height = 3.0f; 
+    public float smoothSpeed = 0.125f; 
 
     private Vector3 offset;
 
