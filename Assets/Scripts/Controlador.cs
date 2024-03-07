@@ -11,11 +11,15 @@ public class Controlador : MonoBehaviour
     private float verticalRotation = 0f;
 
     [SerializeField] private GameObject camara;
+    [SerializeField] private Bala bala;
+    [SerializeField] private Rifle rifle;
+    private float tiempo;
 
     private Animator animator;
     Vector3 inicial;
     void Start()
     {
+        tiempo = Time.time;
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         animator = GetComponent<Animator>();
@@ -47,7 +51,11 @@ public class Controlador : MonoBehaviour
 
         gahterObject();
         Run(Walk());
-        animator.SetFloat("walk", moveSpeed);
+        // animator.SetFloat("walk", moveSpeed);
+        rifle.disparar(tiempo,bala);
+        rifle.recargar();
+        
+       
     }
 
     public void Run(bool caminando)
