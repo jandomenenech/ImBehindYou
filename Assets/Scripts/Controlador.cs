@@ -11,11 +11,15 @@ public class Controlador : MonoBehaviour
     private float verticalRotation = 0f;
 
     [SerializeField] private GameObject camara;
+    [SerializeField] private Bala bala;
+    [SerializeField] private Rifle rifle;
+    private float tiempo;
 
     private Animator animator;
     Vector3 inicial;
     void Start()
     {
+        tiempo = Time.time;
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         animator = GetComponent<Animator>();
@@ -24,7 +28,7 @@ public class Controlador : MonoBehaviour
 
     void Update()
     {
-       
+
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
         Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
@@ -33,11 +37,12 @@ public class Controlador : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
+        transform.Rotate(Vector3.up * mouseX);
+
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
+        camara.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
 
-        transform.Rotate(Vector3.up * mouseX);
-        Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -46,7 +51,11 @@ public class Controlador : MonoBehaviour
 
         gahterObject();
         Run(Walk());
-        animator.SetFloat("walk", moveSpeed);
+        // animator.SetFloat("walk", moveSpeed);
+        rifle.disparar(tiempo,bala);
+        rifle.recargar();
+        
+       
     }
 
     public void Run(bool caminando)
@@ -54,7 +63,7 @@ public class Controlador : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && caminando)
         {
             moveSpeed = 1f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.4f, camara.transform.position.z);
+            camara.transform.position = new Vector3(camara.transform.position.x, 1.7f, camara.transform.position.z);
         }
         else if (Input.GetKey(KeyCode.LeftControl) && caminando)
         {
@@ -64,7 +73,7 @@ public class Controlador : MonoBehaviour
         else if (caminando)
         {
             moveSpeed = 0.5f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.4f, camara.transform.position.z);
+            camara.transform.position = new Vector3(camara.transform.position.x, 1.7f, camara.transform.position.z);
         }
         else if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -73,6 +82,7 @@ public class Controlador : MonoBehaviour
         }
         else
         {
+            camara.transform.position = new Vector3(camara.transform.position.x, 1.7f, camara.transform.position.z);
             moveSpeed = 0;
             
         }
