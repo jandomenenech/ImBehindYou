@@ -51,7 +51,7 @@ public class Controlador : MonoBehaviour
 
         gahterObject();
         Run(Walk());
-        // animator.SetFloat("walk", moveSpeed);
+        animator.SetFloat("walk", moveSpeed);
         rifle.disparar(tiempo,bala);
         rifle.recargar();
         
@@ -68,7 +68,7 @@ public class Controlador : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftControl) && caminando)
         {
             moveSpeed = 0.25f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.2f, camara.transform.position.z);
+            camara.transform.position = new Vector3(camara.transform.position.x, 1.6f, camara.transform.position.z);
         }
         else if (caminando)
         {
@@ -78,7 +78,7 @@ public class Controlador : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftControl))
         {
             moveSpeed = 0.1f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 0.8f, camara.transform.position.z);
+            camara.transform.position = new Vector3(camara.transform.position.x, 1.6f, camara.transform.position.z);
         }
         else
         {
