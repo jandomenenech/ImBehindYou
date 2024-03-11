@@ -121,6 +121,9 @@ NavMeshSettings:
   m_NavMeshData: {fileID: 0}
 --- !u!1 &59914963
 GameObject:
+=======
+--- !u!1 &59914963
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}

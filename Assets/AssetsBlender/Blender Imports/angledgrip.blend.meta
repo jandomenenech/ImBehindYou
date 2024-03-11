@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/AssetsBlender/Blender Imports/angledgrip.blend.meta
 guid: a15e5de962866ce45acb22b3ac929cbf
+========
+guid: 0b837adb6bb9b9a4fa32d42a303a6b69
+>>>>>>>> parent of 0f393f1 (Reimport de mapa):Assets/AssetsBlender/navepasillosdef.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
