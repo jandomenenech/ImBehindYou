@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RamonUnder
+  m_Mask: 01000000000000000000000001000000010000000000000000000000000000000000000001000000010000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: cargador pistola
+    m_Weight: 1
+  - m_Path: "Ca\xF1on"
+    m_Weight: 1
+  - m_Path: Cuerpo
+    m_Weight: 1
+  - m_Path: Esqueleto
+    m_Weight: 1
+  - m_Path: Esqueleto/Esqueleto.002
+    m_Weight: 1
+  - m_Path: Esqueleto/Esqueleto.003
+    m_Weight: 1
+  - m_Path: Esqueleto/Hips
+    m_Weight: 1
+  - m_Path: Esqueleto/Hips/PiernaLeft
+    m_Weight: 1
+  - m_Path: Esqueleto/Hips/PiernaLeft/PiernaLeft.001
+    m_Weight: 1
+  - m_Path: Esqueleto/Hips/PiernaLeft/PiernaLeft.001/PieL
+    m_Weight: 1
+  - m_Path: Esqueleto/Hips/PiernaLeft/PiernaLeft.001/PieL/PieL_end
+    m_Weight: 1
+  - m_Path: Esqueleto/Hips/PiernaRight
+    m_Weight: 1
+  - m_Path: Esqueleto/Hips/PiernaRight/PiernaRight.001
+    m_Weight: 1
+  - m_Path: Esqueleto/Hips/PiernaRight/PiernaRight.001/PiernaRight.002
+    m_Weight: 1
+  - m_Path: Esqueleto/Hips/PiernaRight/PiernaRight.001/PiernaRight.002/PiernaRight.002_end
+    m_Weight: 1
+  - m_Path: Esqueleto/Hips/Spine
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.001
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.001/Hips.003
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.001/Hips.003/Hips.002
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.001/Hips.003/Hips.002/Hips.002_end
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.004
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.004/Hips.006
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.004/Hips.006/Hips.005
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.004/Hips.006/Hips.005/Hips.005_end
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.007
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.007/Hips.009
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.007/Hips.009/Hips.008
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.007/Hips.009/Hips.008/Hips.008_end
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.010
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.010/Hips.012
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.010/Hips.012/Hips.011
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.010/Hips.012/Hips.011/Hips.011_end
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.013
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.013/Hips.014
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.013/Hips.014/Hips.015
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.013/Hips.014/Hips.015/Hips.015_end
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Angular1L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Angular1L/Angular2L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Angular1L/Angular2L/Angular3L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Angular1L/Angular2L/Angular3L/Angular3L_end
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Futifarra1L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Futifarra1L/Futifarra2L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Futifarra1L/Futifarra2L/Futifarra3L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Futifarra1L/Futifarra2L/Futifarra3L/Futifarra3L_end
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Indice1L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Indice1L/Indice2L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Indice1L/Indice2L/Incide3L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Indice1L/Indice2L/Incide3L/Incide3L_end
+    m_Weight: 0
+  - m_Path: "Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Me\xF1ique1L"
+    m_Weight: 0
+  - m_Path: "Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Me\xF1ique1L/Me\xF1ique2L"
+    m_Weight: 0
+  - m_Path: "Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Me\xF1ique1L/Me\xF1ique2L/Me\xF1ique3L"
+    m_Weight: 0
+  - m_Path: "Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Me\xF1ique1L/Me\xF1ique2L/Me\xF1ique3L/Me\xF1ique3L_end"
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Pulgar1L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Pulgar1L/Pulgar2L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Pulgar1L/Pulgar2L/Pulgar3L
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Pulgar1L/Pulgar2L/Pulgar3L/Pulgar3L_end
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/Neck
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/Neck/Head
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/Neck/Head/Head_end
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/Neck/Mandibula
+    m_Weight: 0
+  - m_Path: Esqueleto/Hips/Spine/Chest/Neck/Mandibula/Mandibula_end
+    m_Weight: 0
+  - m_Path: Man
+    m_Weight: 1

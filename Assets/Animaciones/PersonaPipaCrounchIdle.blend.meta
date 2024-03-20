@@ -1,0 +1,280 @@
+fileFormatVersion: 2
+guid: 45be8b57dae966a4e8f77108a2cac419
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CrounchIdle
+      takeName: Scene
+      internalID: -623603649343465320
+      firstFrame: 1
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 10
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000000000000000000001000000010000000000000000000000000000000000000001000000010000000000000000000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: cargador pistola
+        weight: 1
+      - path: "Ca\xF1on"
+        weight: 1
+      - path: Cuerpo
+        weight: 1
+      - path: Esqueleto
+        weight: 1
+      - path: Esqueleto/Esqueleto.002
+        weight: 1
+      - path: Esqueleto/Esqueleto.003
+        weight: 1
+      - path: Esqueleto/Hips
+        weight: 1
+      - path: Esqueleto/Hips/PiernaLeft
+        weight: 1
+      - path: Esqueleto/Hips/PiernaLeft/PiernaLeft.001
+        weight: 1
+      - path: Esqueleto/Hips/PiernaLeft/PiernaLeft.001/PieL
+        weight: 1
+      - path: Esqueleto/Hips/PiernaLeft/PiernaLeft.001/PieL/PieL_end
+        weight: 1
+      - path: Esqueleto/Hips/PiernaRight
+        weight: 1
+      - path: Esqueleto/Hips/PiernaRight/PiernaRight.001
+        weight: 1
+      - path: Esqueleto/Hips/PiernaRight/PiernaRight.001/PiernaRight.002
+        weight: 1
+      - path: Esqueleto/Hips/PiernaRight/PiernaRight.001/PiernaRight.002/PiernaRight.002_end
+        weight: 1
+      - path: Esqueleto/Hips/Spine
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.001
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.001/Hips.003
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.001/Hips.003/Hips.002
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.001/Hips.003/Hips.002/Hips.002_end
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.004
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.004/Hips.006
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.004/Hips.006/Hips.005
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.004/Hips.006/Hips.005/Hips.005_end
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.007
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.007/Hips.009
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.007/Hips.009/Hips.008
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.007/Hips.009/Hips.008/Hips.008_end
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.010
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.010/Hips.012
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.010/Hips.012/Hips.011
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.010/Hips.012/Hips.011/Hips.011_end
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.013
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.013/Hips.014
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.013/Hips.014/Hips.015
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClaviculaR/BrazoD/BrazoInferiorD/BrazoInferiorD.001/Hips.013/Hips.014/Hips.015/Hips.015_end
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Angular1L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Angular1L/Angular2L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Angular1L/Angular2L/Angular3L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Angular1L/Angular2L/Angular3L/Angular3L_end
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Futifarra1L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Futifarra1L/Futifarra2L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Futifarra1L/Futifarra2L/Futifarra3L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Futifarra1L/Futifarra2L/Futifarra3L/Futifarra3L_end
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Indice1L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Indice1L/Indice2L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Indice1L/Indice2L/Incide3L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Indice1L/Indice2L/Incide3L/Incide3L_end
+        weight: 0
+      - path: "Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Me\xF1ique1L"
+        weight: 0
+      - path: "Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Me\xF1ique1L/Me\xF1ique2L"
+        weight: 0
+      - path: "Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Me\xF1ique1L/Me\xF1ique2L/Me\xF1ique3L"
+        weight: 0
+      - path: "Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Me\xF1ique1L/Me\xF1ique2L/Me\xF1ique3L/Me\xF1ique3L_end"
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Pulgar1L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Pulgar1L/Pulgar2L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Pulgar1L/Pulgar2L/Pulgar3L
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/ClavivulaL/Left/CodoL/CodoL.001/Pulgar1L/Pulgar2L/Pulgar3L/Pulgar3L_end
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/Neck
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/Neck/Head
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/Neck/Head/Head_end
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/Neck/Mandibula
+        weight: 0
+      - path: Esqueleto/Hips/Spine/Chest/Neck/Mandibula/Mandibula_end
+        weight: 0
+      - path: Man
+        weight: 1
+      maskType: 1
+      maskSource: {fileID: 31900000, guid: c90efcd5245541f498e5fb1f21bb31c5, type: 2}
+      additiveReferencePoseFrame: 1
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

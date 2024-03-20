@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Rifle : MonoBehaviour
 {
-    public float balas = 12;
-    public float maxBalas = 48;
+    public float balas;
+    public float maxBalas;
     public Animator animator;
     public void disparar(float tiempoDisparo, Bala bala)
     {
@@ -23,10 +23,18 @@ public class Rifle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && maxBalas>0)
         {
-            animator.SetTrigger("Recargar");
-            maxBalas -= (12 - balas);
-            balas = 12;
-            
+            if (maxBalas + balas > 11)
+            {
+                animator.SetTrigger("Recargar");
+                maxBalas -= (12 - balas);
+                balas = 12;
+            }
+            else
+            {
+                animator.SetTrigger("Recargar");
+                balas += maxBalas;
+                maxBalas = 0;
+            }
         }
         
     }
