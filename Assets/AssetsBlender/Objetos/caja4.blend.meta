@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 643ad81c852541f40954e12f9def5f92
+guid: 2fa28c0a4dda5734a8e1c3a3886e0a23
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,7 +31,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: AperturaHorizontal
+      name: AperturaDiagonal
       takeName: Scene
       internalID: -623603649343465320
       firstFrame: 1

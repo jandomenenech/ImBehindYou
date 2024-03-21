@@ -29,12 +29,16 @@ public class Objeto : MonoBehaviour
     void animacionCaja()
     {
         float distancia = Vector3.Distance(personaje.position, objeto.position);
-        int random = Random.Range(1, 3);
-      
-        if (distancia < 1f && contador!=1)
+        int random = Random.Range(1, 5);
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            animCaja.SetInteger("Random",random);
-            contador = 1;
+            if (distancia < 2f && contador != 1)
+            {
+                animCaja.SetInteger("Random", random);
+                contador = 1;
+            }
         }
+       
     }
 }
