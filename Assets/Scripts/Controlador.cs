@@ -62,27 +62,27 @@ public class Controlador : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) && caminando)
         {
-            moveSpeed = 1f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.7f, camara.transform.position.z);
+            moveSpeed = 5f;
+            camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
         else if (Input.GetKey(KeyCode.LeftControl) && caminando)
         {
             moveSpeed = 0.25f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.6f, camara.transform.position.z);
+            camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
         else if (caminando)
         {
             moveSpeed = 0.5f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.7f, camara.transform.position.z);
+            camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
         else if (Input.GetKey(KeyCode.LeftControl))
         {
             moveSpeed = 0.1f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.6f, camara.transform.position.z);
+            camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
         else
         {
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.7f, camara.transform.position.z);
+            camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
             moveSpeed = 0;
             
         }

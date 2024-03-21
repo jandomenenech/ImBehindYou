@@ -41,6 +41,12 @@ public class CambioDeArmas : MonoBehaviour
             animator.SetBool("Rifle", true);
             animator.SetBool("Pistol", false);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ActivarArma(2);
+            animator.SetBool("Rifle", false);
+            animator.SetBool("Pistol", false);
+        }
 
 
     }
