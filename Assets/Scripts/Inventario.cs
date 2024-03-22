@@ -8,15 +8,18 @@ public class Inventario : MonoBehaviour
     [SerializeField] public List<GameObject> inventario;
     private int maxInventario;
     private Transform personaje;
+    [SerializeField] private GameObject panelInventario;
+    private bool inventarioActivo;
     void Start()
     {
-        maxInventario = 16;
+        maxInventario = 14;
         personaje = GetComponent<Transform>();
+        inventarioActivo = false;
     }
 
     void Update()
     {
-       
+        activarInventario();
     }
 
     public void guardarEnInventario(GameObject objeto)
@@ -30,6 +33,20 @@ public class Inventario : MonoBehaviour
         else
         {
 
+        }
+    }
+
+    void activarInventario()
+    {
+        if (Input.GetKeyDown(KeyCode.I) && inventarioActivo == false)
+        {
+            inventarioActivo = true;
+            panelInventario.SetActive(inventarioActivo);
+        }
+        else if((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape)) && inventarioActivo == true)
+        {
+            inventarioActivo=false;
+            panelInventario.SetActive(false); 
         }
     }
 }
