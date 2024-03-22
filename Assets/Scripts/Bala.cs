@@ -16,14 +16,14 @@ public class Bala : MonoBehaviour
     }
     public void Disparar()
     {
-        Quaternion rotacion = Quaternion.Euler(90f, 0f, 0f);
+        Quaternion rotacion = Quaternion.Euler(90f, 90f, 0f);
         GameObject bala = Instantiate(balaPrefab, puntoDeDisparo.position,rotacion);
 
         Rigidbody balaRigidbody = bala.GetComponent<Rigidbody>();
 
         if (balaRigidbody != null)
         {
-            balaRigidbody.AddForce(-puntoDeDisparo.forward * fuerzaDeDisparo, ForceMode.Impulse);
+            balaRigidbody.AddForce(puntoDeDisparo.forward * fuerzaDeDisparo, ForceMode.Impulse);
 
             Destroy(bala, 5f);
         }
