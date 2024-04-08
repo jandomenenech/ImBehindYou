@@ -33,6 +33,7 @@ public class CambioDeArmas : MonoBehaviour
             ActivarArma(0);
             animator.SetBool("Rifle",false);
             animator.SetBool("Pistol",true);
+            animator.SetBool("Knife", false);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -40,12 +41,14 @@ public class CambioDeArmas : MonoBehaviour
             ActivarArma(1);
             animator.SetBool("Rifle", true);
             animator.SetBool("Pistol", false);
+            animator.SetBool("Knife", false);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             ActivarArma(2);
             animator.SetBool("Rifle", false);
             animator.SetBool("Pistol", false);
+            animator.SetBool("Knife", true);
         }
 
 
