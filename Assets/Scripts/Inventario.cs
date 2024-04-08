@@ -24,7 +24,7 @@ public class Inventario : MonoBehaviour
 
     public void guardarEnInventario(GameObject objeto)
     {
-        if (inventario.Count <= maxInventario)
+        if (inventario.Count < maxInventario)
         {
             inventario.Add(objeto);
             objeto.SetActive(false);
