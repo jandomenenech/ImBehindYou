@@ -6062,21 +6062,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f5bac024e3efb4a9779177e4d1f070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventario:
-  - {fileID: 1267270494}
-  - {fileID: 1724273934}
-  - {fileID: 1921925285}
-  - {fileID: 1203666065}
-  - {fileID: 279427248}
-  - {fileID: 958775085}
-  - {fileID: 1686778338}
-  - {fileID: 276245378}
-  - {fileID: 1680151947}
-  - {fileID: 14722815}
-  - {fileID: 1933503120}
-  - {fileID: 832794788}
-  - {fileID: 1694891290}
-  - {fileID: 781432841}
+  nombreInventario:
+  - {fileID: 1267270496}
+  - {fileID: 1724273936}
+  - {fileID: 1921925287}
+  - {fileID: 1203666067}
+  - {fileID: 279427250}
+  - {fileID: 958775087}
+  - {fileID: 1686778340}
+  - {fileID: 276245380}
+  - {fileID: 1680151949}
+  - {fileID: 14722817}
+  - {fileID: 1933503122}
+  - {fileID: 832794790}
+  - {fileID: 1694891292}
+  - {fileID: 781432843}
+  inventario: []
   panelInventario: {fileID: 2145887306}
 --- !u!1 &672618015
 GameObject:

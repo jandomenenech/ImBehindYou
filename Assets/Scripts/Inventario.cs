@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Inventario : MonoBehaviour
 {
+    [SerializeField] public List<TextMeshProUGUI> nombreInventario;
     [SerializeField] public List<GameObject> inventario;
-    private int maxInventario;
     private Transform personaje;
     [SerializeField] private GameObject panelInventario;
     private bool inventarioActivo;
+    int contador;
     void Start()
     {
-        maxInventario = 14;
         personaje = GetComponent<Transform>();
         inventarioActivo = false;
+        contador = 0;
     }
 
     void Update()
@@ -24,16 +27,24 @@ public class Inventario : MonoBehaviour
 
     public void guardarEnInventario(GameObject objeto)
     {
-        if (inventario.Count < maxInventario)
+        
+        foreach (TextMeshProUGUI t in nombreInventario)
         {
-            inventario.Add(objeto);
-            objeto.SetActive(false);
-            objeto.transform.position = personaje.position;
+            if (t.text.Equals("-") && contador!=1)
+            {
+                
+                t.text = objeto.name;
+                inventario.Add(objeto);
+                objeto.SetActive(false);
+                objeto.transform.position = personaje.position;
+                contador = 1;
+            }
+            else
+            {
+                Debug.Log("No va");
+            }
         }
-        else
-        {
-
-        }
+        
     }
 
     void activarInventario()

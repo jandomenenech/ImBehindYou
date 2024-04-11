@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         Run(caminando);
         gahterObject();
 
-        Vector3 movimiento = new Vector3(movimientoHorizontal, 0.0f, movimientoVertical);
+        Vector3 movimiento = new Vector3(movimientoHorizontal, 0.0f , movimientoVertical);
         rb.velocity = movimiento * velocidad;
 
         if (movimiento != Vector3.zero)
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         animator.SetFloat("walk", velocidad);
-
+        
     }
 
 
@@ -84,10 +84,9 @@ public class PlayerMovement : MonoBehaviour
         }
          
     }
-}
 
-
-/* public CharacterController controller;
+ 
+}/*
 
  public float speed = 10f;
  public float gravity = -9.18f;
