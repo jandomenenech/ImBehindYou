@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float velocidad; 
     private Rigidbody rb;
     private Animator animator;
+   
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
         float movimientoHorizontal = Input.GetAxis("Horizontal");
         float movimientoVertical = Input.GetAxis("Vertical");
 
