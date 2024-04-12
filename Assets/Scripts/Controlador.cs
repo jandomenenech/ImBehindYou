@@ -7,8 +7,8 @@ public class Controlador : MonoBehaviour
     public float moveSpeed = 0f;
     public float mouseSensitivity = 100f;
 
-    private CharacterController characterController;
     private float verticalRotation = 0f;
+    private Rigidbody rb;
 
     [SerializeField] private GameObject camara;
     [SerializeField] private Bala bala;
@@ -20,10 +20,11 @@ public class Controlador : MonoBehaviour
     void Start()
     {
         tiempo = Time.time;
-        characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         animator = GetComponent<Animator>();
         inicial = camara.transform.position;
+        rb = GetComponent<Rigidbody>();
+
     }
 
     void Update()
@@ -32,7 +33,8 @@ public class Controlador : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
         Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
-        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+        rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
+
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -63,7 +65,7 @@ public class Controlador : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) && caminando)
         {
-            moveSpeed = 10f;
+            moveSpeed = 200f;
             camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
         else if (Input.GetKey(KeyCode.LeftControl))
