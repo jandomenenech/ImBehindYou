@@ -30,10 +30,11 @@ public class Inventario : MonoBehaviour
         
         foreach (TextMeshProUGUI t in nombreInventario)
         {
-            if (t.text.Equals("-") && contador!=1)
+            string texto = t.text.ToString().Trim();
+            if (texto.Equals("-") && contador!=1)
             {
-                
-                t.text = objeto.name;
+                string[] hola = objeto.name.ToString().Split(" ");
+                t.text = hola[0];
                 inventario.Add(objeto);
                 objeto.SetActive(false);
                 objeto.transform.position = personaje.position;
@@ -44,6 +45,7 @@ public class Inventario : MonoBehaviour
                 Debug.Log("No va");
             }
         }
+        contador = 0;
         
     }
 

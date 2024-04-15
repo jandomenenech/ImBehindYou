@@ -6143,8 +6143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nombreInventario:
-  - {fileID: 1267270496}
   - {fileID: 1724273936}
+  - {fileID: 1267270496}
   - {fileID: 1921925287}
   - {fileID: 1203666067}
   - {fileID: 279427250}
