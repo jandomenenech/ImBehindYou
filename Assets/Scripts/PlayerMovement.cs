@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float velocidad; 
+    public float velocidad;
+
+
+
+
+
     private Rigidbody rb;
     private Animator animator;
+    private bool isSpringting = false;
+
    
 
     void Start()
