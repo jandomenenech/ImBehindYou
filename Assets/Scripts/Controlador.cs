@@ -14,7 +14,7 @@ public class Controlador : MonoBehaviour
     [SerializeField] private Bala bala;
     [SerializeField] private Rifle rifle;
     private float tiempo;
-
+    [SerializeField] private GameObject armas;
     private Animator animator;
     Vector3 inicial;
     void Start()
@@ -52,12 +52,12 @@ public class Controlador : MonoBehaviour
 
         gahterObject();
         Run(Walk());
-       
+
         animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
-        rifle.disparar(tiempo,bala);
-        rifle.recargar();
-        
-       
+        rifle.disparar(animator);
+        rifle.recargar(animator);
+
+
     }
 
     public void Run(bool caminando)
@@ -101,9 +101,11 @@ public class Controlador : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             animator.SetBool("PressE", true);
+            armas.SetActive(false);
         }
         else
         {
+            
             animator.SetBool("PressE", false);
         }
 
