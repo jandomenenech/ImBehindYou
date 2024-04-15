@@ -7,7 +7,6 @@ public class Controlador : MonoBehaviour
     public float moveSpeed = 0f;
     public float mouseSensitivity = 100f;
 
-    private CharacterController characterController;
     private float verticalRotation = 0f;
     private Rigidbody rb;
 
@@ -21,7 +20,6 @@ public class Controlador : MonoBehaviour
     void Start()
     {
         tiempo = Time.time;
-        characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         animator = GetComponent<Animator>();
         inicial = camara.transform.position;
@@ -35,6 +33,7 @@ public class Controlador : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical");
         Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
         rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
+
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

@@ -29,7 +29,7 @@ public class Objeto : MonoBehaviour
         {
             animacionCaja();
         }
-        if (esAccesorio)
+        if (esAccesorio || esConsumible)
         {
             recogerObjeto();
         }
