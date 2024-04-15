@@ -7,8 +7,8 @@ public class Controlador : MonoBehaviour
     public float moveSpeed = 0f;
     public float mouseSensitivity = 100f;
 
-    private CharacterController characterController;
     private float verticalRotation = 0f;
+    private Rigidbody rb;
 
     [SerializeField] private GameObject camara;
     [SerializeField] private Bala bala;
@@ -20,10 +20,10 @@ public class Controlador : MonoBehaviour
     void Start()
     {
         tiempo = Time.time;
-        characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         animator = GetComponent<Animator>();
         inicial = camara.transform.position;
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -32,7 +32,8 @@ public class Controlador : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
         Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
-        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+        rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
+
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -51,7 +52,8 @@ public class Controlador : MonoBehaviour
 
         gahterObject();
         Run(Walk());
-        animator.SetFloat("walk", moveSpeed);
+       
+        animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
         rifle.disparar(tiempo,bala);
         rifle.recargar();
         
@@ -62,27 +64,28 @@ public class Controlador : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) && caminando)
         {
-            moveSpeed = 1f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.7f, camara.transform.position.z);
-        }
-        else if (Input.GetKey(KeyCode.LeftControl) && caminando)
-        {
-            moveSpeed = 0.25f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.6f, camara.transform.position.z);
-        }
-        else if (caminando)
-        {
-            moveSpeed = 0.5f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.7f, camara.transform.position.z);
+            moveSpeed = 850f;
+            camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
         else if (Input.GetKey(KeyCode.LeftControl))
         {
             moveSpeed = 0.1f;
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.6f, camara.transform.position.z);
+            camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
+        else if (Input.GetKey(KeyCode.LeftControl) && caminando)
+        {
+            moveSpeed = 2f;
+            camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
+        }
+        else if (caminando)
+        {
+            moveSpeed = 600f;
+            camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
+        }
+      
         else
         {
-            camara.transform.position = new Vector3(camara.transform.position.x, 1.7f, camara.transform.position.z);
+            camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
             moveSpeed = 0;
             
         }

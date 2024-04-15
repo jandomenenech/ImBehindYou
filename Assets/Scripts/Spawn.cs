@@ -1,36 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public GameObject angledgrip;
-    public Transform spawnPoint;
+    public List<GameObject> spawnableObjects = new List<GameObject>(); // List to hold the GameObjects
+    public float scaleFactor = 0.5f; // Scale factor to adjust the size of the spawned object
+    private bool hasInitialized = false; // Flag to track if the initialization has been done
 
-    // Start is called before the first frame update
     void Start()
     {
-        // Find the spawn point GameObject by name
-        GameObject spawnPointObject = GameObject.Find("Objeto1SpawnTest");
-
-        // Check if the spawn point GameObject was found
-        if (spawnPointObject != null)
+        // Check if the initialization has already been done
+        if (!hasInitialized)
         {
-            // Assign the transform of the found GameObject to spawnPoint
-            spawnPoint = spawnPointObject.transform;
+            // Add your three GameObjects to the list
+            spawnableObjects.Add(GameObject.Find("medkit"));
+            spawnableObjects.Add(GameObject.Find("lightgrip"));
+            spawnableObjects.Add(GameObject.Find("angledgrip"));
 
-            // Spawn the object
-            SpawnObject();
-        }
-        else
-        {
-            Debug.LogError("Spawn point not found! Make sure the spawn point GameObject is named Objeto1SpawnTest.");
+            // Set the flag to true to indicate initialization is done
+            hasInitialized = true;
+
+            // Spawn a random object from the list
+            SpawnRandomObject();
         }
     }
 
-    void SpawnObject()
+    void SpawnRandomObject()
     {
-        Instantiate(angledgrip, spawnPoint.position, spawnPoint.rotation);
+        // Check if there are objects in the list
+        if (spawnableObjects.Count > 0)
+        {
+            // Get a random index within the range of the list
+            int randomIndex = Random.Range(0, spawnableObjects.Count);
+
+            // Instantiate the randomly selected object at the spawn point
+            GameObject spawnedObject = Instantiate(spawnableObjects[randomIndex], transform.position, transform.rotation);
+
+            // Adjust the scale of the spawned object
+            spawnedObject.transform.localScale *= scaleFactor;
+        }
+        else
+        {
+            Debug.LogError("No spawnable objects assigned to the list!");
+        }
     }
 }

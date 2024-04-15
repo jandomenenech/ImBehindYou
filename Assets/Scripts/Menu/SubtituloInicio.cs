@@ -100,7 +100,7 @@ public class SubtituloInicio : MonoBehaviour
 
     public void playing()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Mapa");
     }
     public void exit()
     {
