@@ -33,7 +33,7 @@ public class Inventario : MonoBehaviour
             string texto = t.text.ToString().Trim();
             if (texto.Equals("-") && contador!=1)
             {
-                string[] hola = objeto.name.ToString().Split(" ");
+                string[] hola = objeto.name.ToString().Split("(");
                 t.text = hola[0];
                 inventario.Add(objeto);
                 objeto.SetActive(false);

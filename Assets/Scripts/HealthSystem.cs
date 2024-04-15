@@ -15,7 +15,7 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        UpdateHealthText();
+        //UpdateHealthText();
         UpdateMaxHealthText(); // Call to update max health text on start
     }
 
@@ -49,7 +49,7 @@ public class HealthSystem : MonoBehaviour
 
     void UpdateMaxHealthText()
     {
-        maxHealthText.text = maxHealth.ToString(); // Update max health text
+        //maxHealthText.text = maxHealth.ToString(); // Update max health text
     }
 
     void EndGame()

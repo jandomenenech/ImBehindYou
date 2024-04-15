@@ -56,11 +56,12 @@ public class Objeto : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (distancia < 2f && contador != 1)
+            if (distancia < 3f && contador != 1)
             {
                 contador = 1;
                 inventario.guardarEnInventario(gameObject);
             }
         }
+        
     }
 }
