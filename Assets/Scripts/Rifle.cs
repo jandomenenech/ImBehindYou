@@ -19,6 +19,10 @@ public class Rifle : MonoBehaviour
 
     void Update()
     {
+        if (cuchillo)
+        {
+            animarCuchillo(animator);
+        }
          if (arma)
         {
             disparar(animator);
@@ -55,5 +59,13 @@ public class Rifle : MonoBehaviour
             }
         }
         
+    }
+
+    public void animarCuchillo(Animator animator)
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            animator.SetTrigger("Inspeccion");
+        }
     }
 }

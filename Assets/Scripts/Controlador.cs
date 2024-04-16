@@ -56,9 +56,11 @@ public class Controlador : MonoBehaviour
         animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
         rifle.disparar(animator);
         rifle.recargar(animator);
-
+        rifle.animarCuchillo(animator);
 
     }
+
+
 
     public void Run(bool caminando)
     {
@@ -101,7 +103,7 @@ public class Controlador : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             animator.SetBool("PressE", true);
-            armas.SetActive(false);
+            
         }
         else
         {

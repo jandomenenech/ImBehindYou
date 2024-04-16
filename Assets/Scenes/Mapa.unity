@@ -10000,6 +10000,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3329902420748629119, guid: 9efb491aa7699f440adbe9de5c31ea39, type: 3}
+--- !u!95 &859831123 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 836372573097964540, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+  m_PrefabInstance: {fileID: 4160305607398027807}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &875563428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12832,6 +12837,51 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -257278029260952120, guid: 9efb491aa7699f440adbe9de5c31ea39, type: 3}
+--- !u!1 &1154771969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8666989643556671092, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+  m_PrefabInstance: {fileID: 4160305607398027807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1154771971
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154771969}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9574de5c094287e49b8cbdc34d56f7df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1154771972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154771969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d138ac1854ebe2499046d57af08cf53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arma: 0
+  cuchillo: 1
+  balas: 0
+  maxBalas: 0
+  animator: {fileID: 1154771971}
+  bala: {fileID: 615554246}
 --- !u!1 &1162132146
 GameObject:
   m_ObjectHideFlags: 0
@@ -23416,6 +23466,14 @@ PrefabInstance:
       propertyPath: arma
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2276637241171164821, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+      propertyPath: bala
+      value: 
+      objectReference: {fileID: 615554246}
+    - target: {fileID: 2276637241171164821, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 859831123}
     - target: {fileID: 2357586095715156208, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -12.096269
@@ -23893,6 +23951,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2208641028181889092, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1751601870}
+    - targetCorrespondingSourceObject: {fileID: 8666989643556671092, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1154771972}
+    - targetCorrespondingSourceObject: {fileID: 8666989643556671092, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1154771971}
   m_SourcePrefab: {fileID: 100100000, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
 --- !u!1001 &4952404890541692913
 PrefabInstance:

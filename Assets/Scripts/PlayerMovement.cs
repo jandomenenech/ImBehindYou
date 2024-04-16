@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("walk", velocidad);
         
+        
     }
 
 
