@@ -10,21 +10,28 @@ public class HealthSystem : MonoBehaviour
     private int currentHealth;
 
     public TextMeshProUGUI healthText;
-    public TextMeshProUGUI maxHealthText; // TextMeshPro for displaying max health
+    public TextMeshProUGUI maxHealthText;
+
+    [SerializeField] private Inventario inv;
+
+
 
     void Start()
     {
         currentHealth = maxHealth;
-        //UpdateHealthText();
-        UpdateMaxHealthText(); // Call to update max health text on start
+        UpdateMaxHealthText();
+        inv = GameObject.FindGameObjectWithTag("Inventario").GetComponent<Inventario>();
+
     }
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.P))
         {
-            DecreaseHealth(12); // Decrease health by 12 when P is pressed
+            DecreaseHealth(12);
         }
+        UseMedkit();
     }
 
     void DecreaseHealth(int amount)
@@ -49,12 +56,47 @@ public class HealthSystem : MonoBehaviour
 
     void UpdateMaxHealthText()
     {
-        //maxHealthText.text = maxHealth.ToString(); // Update max health text
+        maxHealthText.text = maxHealth.ToString();
     }
 
     void EndGame()
     {
-        Debug.Log("Gameover");
-        
+        Debug.Log("Game Over");
     }
+
+
+
+    void IncreaseHealth(int amount)
+    {
+    currentHealth += amount;
+    if(currentHealth > maxHealth)
+    {
+        currentHealth = maxHealth;
+    }
+    UpdateHealthText();
+    }
+
+
+void UseMedkit()
+{
+    
+    
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+
+             foreach(GameObject obj in inv.inventario)
+            {
+                if(obj.CompareTag("Medkit")){
+                   IncreaseHealth(40);
+                }
+            }
+            // inv.inventario.Remove(obj); // Opcional: elimina el medkit del inventario
+        }
+        else {
+            Debug.Log("No se cura");
+        }
+   
+}
+
+
 }

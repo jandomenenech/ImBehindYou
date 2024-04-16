@@ -13,6 +13,8 @@ public class Inventario : MonoBehaviour
     [SerializeField] private GameObject panelInventario;
     private bool inventarioActivo;
     int contador;
+
+    
     void Start()
     {
         personaje = GetComponent<Transform>();
@@ -46,7 +48,6 @@ public class Inventario : MonoBehaviour
             }
         }
         contador = 0;
-        
     }
 
     void activarInventario()
@@ -59,7 +60,7 @@ public class Inventario : MonoBehaviour
         else if((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape)) && inventarioActivo == true)
         {
             inventarioActivo=false;
-            panelInventario.SetActive(false); 
+            panelInventario.SetActive(false);
         }
     }
 }

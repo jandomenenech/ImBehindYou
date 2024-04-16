@@ -238,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 3387055}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -162.23, y: 21.37, z: 38.8}
+  m_LocalPosition: {x: -162.23, y: 21.37, z: 38.799988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1478,7 +1478,7 @@ Transform:
   m_GameObject: {fileID: 114111702}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -125.70868, y: 29.426348, z: 260.8804}
+  m_LocalPosition: {x: -125.70868, y: 29.42635, z: 260.8804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8350,7 +8350,7 @@ Transform:
   m_GameObject: {fileID: 722296569}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.988682, y: 15.726348, z: 19.830414}
+  m_LocalPosition: {x: -11.988682, y: 15.726349, z: 19.830414}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8692,7 +8692,7 @@ Transform:
   m_GameObject: {fileID: 759213099}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -180.23, y: 21.37, z: 38.8}
+  m_LocalPosition: {x: -180.23, y: 21.37, z: 38.799988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10961,7 +10961,7 @@ Transform:
   m_GameObject: {fileID: 934148858}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -125.70868, y: 30.516348, z: 232.3204}
+  m_LocalPosition: {x: -125.70868, y: 30.516346, z: 232.3204}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16341,6 +16341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1492753595}
+  - component: {fileID: 1492753596}
   m_Layer: 0
   m_Name: PlayerSpawners
   m_TagString: Untagged
@@ -16366,6 +16367,23 @@ Transform:
   - {fileID: 129536003}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1492753596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492753594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf37f2881d0cef4fb9c611ef3a8654b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoints:
+  - {fileID: 129536003}
+  - {fileID: 1704097004}
+  - {fileID: 313862481}
+  player: {fileID: 1751601867}
 --- !u!1 &1497851298
 GameObject:
   m_ObjectHideFlags: 0
@@ -16741,7 +16759,7 @@ Transform:
   m_GameObject: {fileID: 1529983356}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44.67868, y: 15.236348, z: 26.780396}
+  m_LocalPosition: {x: -44.67868, y: 15.236347, z: 26.780396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19169,6 +19187,7 @@ MonoBehaviour:
   maxHealth: 100
   healthText: {fileID: 1170975170}
   maxHealthText: {fileID: 0}
+  inv: {fileID: 0}
 --- !u!114 &1762058995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19463,6 +19482,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 213a681a440b41b4a9baf445324a5e44, type: 3}
       propertyPath: m_Name
       value: medkit
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 213a681a440b41b4a9baf445324a5e44, type: 3}
+      propertyPath: m_TagString
+      value: Medkit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
