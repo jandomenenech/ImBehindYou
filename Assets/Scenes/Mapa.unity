@@ -19187,7 +19187,7 @@ MonoBehaviour:
   maxHealth: 100
   healthText: {fileID: 1170975170}
   maxHealthText: {fileID: 0}
-  inv: {fileID: 0}
+  inv: {fileID: 1751601870}
 --- !u!114 &1762058995
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -79,7 +79,7 @@ public class HealthSystem : MonoBehaviour
 
 void UseMedkit()
 {
-    
+    int contador = 0;
     
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
@@ -88,6 +88,18 @@ void UseMedkit()
             {
                 if(obj.CompareTag("Medkit")){
                    IncreaseHealth(40);
+                   inv.inventario.Remove(obj);
+                   Destroy(obj);
+                   foreach (TextMeshProUGUI i in inv.nombreInventario)
+                   {
+
+                    if(i.text.Equals("medkit") && contador != 1)
+                    {
+                        i.text = "-";
+                        contador = 1;
+                    }
+                   }
+                   break;
                 }
             }
             // inv.inventario.Remove(obj); // Opcional: elimina el medkit del inventario
