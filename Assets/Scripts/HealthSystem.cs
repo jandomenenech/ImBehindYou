@@ -10,21 +10,29 @@ public class HealthSystem : MonoBehaviour
     private int currentHealth;
 
     public TextMeshProUGUI healthText;
-    public TextMeshProUGUI maxHealthText; // TextMeshPro for displaying max health
+    public TextMeshProUGUI maxHealthText;
+
+    [SerializeField] private Inventario inv;
+
+
 
     void Start()
     {
         currentHealth = maxHealth;
-        //UpdateHealthText();
-        UpdateMaxHealthText(); // Call to update max health text on start
+        UpdateMaxHealthText();
+        inv = GameObject.FindGameObjectWithTag("Inventario").GetComponent<Inventario>();
+
     }
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.P))
         {
-            DecreaseHealth(12); // Decrease health by 12 when P is pressed
+            DecreaseHealth(12);
         }
+        UseMedkit();
+        UseTin();
     }
 
     void DecreaseHealth(int amount)
@@ -49,12 +57,93 @@ public class HealthSystem : MonoBehaviour
 
     void UpdateMaxHealthText()
     {
-        //maxHealthText.text = maxHealth.ToString(); // Update max health text
+        maxHealthText.text = maxHealth.ToString();
     }
 
     void EndGame()
     {
-        Debug.Log("Gameover");
-        
+        Debug.Log("Game Over");
     }
+
+
+
+    void IncreaseHealth(int amount)
+    {
+    currentHealth += amount;
+    if(currentHealth > maxHealth)
+    {
+        currentHealth = maxHealth;
+    }
+    UpdateHealthText();
+    }
+
+
+void UseMedkit()
+{
+    int contador = 0;
+    
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+
+             foreach(GameObject obj in inv.inventario)
+            {
+                if(obj.CompareTag("Medkit")){
+                   IncreaseHealth(40);
+                   inv.inventario.Remove(obj);
+                   Destroy(obj);
+                   foreach (TextMeshProUGUI i in inv.nombreInventario)
+                   {
+
+                    if(i.text.Equals("medkit") && contador != 1)
+                    {
+                        i.text = "-";
+                        contador = 1;
+                    }
+                   }
+                   break;
+                }
+            }
+            // inv.inventario.Remove(obj); // Opcional: elimina el medkit del inventario
+        }
+        else {
+            Debug.Log("No se cura");
+        }
+   
+}
+
+
+void UseTin()
+{
+    int contador = 0;
+    
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+
+             foreach(GameObject obj in inv.inventario)
+            {
+                if(obj.CompareTag("Tin")){
+                   IncreaseHealth(15);
+                   inv.inventario.Remove(obj);
+                   Destroy(obj);
+                   foreach (TextMeshProUGUI i in inv.nombreInventario)
+                   {
+
+                    if(i.text.Equals("tin") && contador != 1)
+                    {
+                        i.text = "-";
+                        contador = 1;
+                    }
+                   }
+                   break;
+                }
+            }
+            // inv.inventario.Remove(obj); // Opcional: elimina el medkit del inventario
+        }
+        else {
+            Debug.Log("No se cura");
+        }
+   
+}
+
+
 }
