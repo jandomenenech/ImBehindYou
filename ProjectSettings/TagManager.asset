@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - InteractObjects
   - Medkit
+  - Tin
+  - Bottle
   layers:
   - Default
   - TransparentFX

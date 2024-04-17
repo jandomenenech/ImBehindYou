@@ -32,6 +32,7 @@ public class HealthSystem : MonoBehaviour
             DecreaseHealth(12);
         }
         UseMedkit();
+        UseTin();
     }
 
     void DecreaseHealth(int amount)
@@ -94,6 +95,40 @@ void UseMedkit()
                    {
 
                     if(i.text.Equals("medkit") && contador != 1)
+                    {
+                        i.text = "-";
+                        contador = 1;
+                    }
+                   }
+                   break;
+                }
+            }
+            // inv.inventario.Remove(obj); // Opcional: elimina el medkit del inventario
+        }
+        else {
+            Debug.Log("No se cura");
+        }
+   
+}
+
+
+void UseTin()
+{
+    int contador = 0;
+    
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+
+             foreach(GameObject obj in inv.inventario)
+            {
+                if(obj.CompareTag("Tin")){
+                   IncreaseHealth(15);
+                   inv.inventario.Remove(obj);
+                   Destroy(obj);
+                   foreach (TextMeshProUGUI i in inv.nombreInventario)
+                   {
+
+                    if(i.text.Equals("tin") && contador != 1)
                     {
                         i.text = "-";
                         contador = 1;
