@@ -9227,7 +9227,7 @@ Transform:
   m_GameObject: {fileID: 784225251}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -0.032000065, z: 0.5760002}
+  m_LocalPosition: {x: 0.08, y: -0.032000065, z: 0.652}
   m_LocalScale: {x: 0.98232, y: 0.98232, z: 0.98232}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23848,6 +23848,10 @@ PrefabInstance:
       propertyPath: bala
       value: 
       objectReference: {fileID: 615554246}
+    - target: {fileID: 8311282835385060858, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
