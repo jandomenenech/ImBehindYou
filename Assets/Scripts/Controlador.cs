@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Controlador : MonoBehaviour
@@ -13,9 +14,12 @@ public class Controlador : MonoBehaviour
     [SerializeField] private GameObject camara;
     [SerializeField] private Bala bala;
     [SerializeField] private Rifle rifle;
+    [SerializeField] private TextMeshProUGUI text;
     private float tiempo;
 
     private Animator animator;
+
+    
     Vector3 inicial;
     void Start()
     {
@@ -56,7 +60,6 @@ public class Controlador : MonoBehaviour
         animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
         rifle.disparar(tiempo,bala);
         rifle.recargar();
-        
        
     }
 

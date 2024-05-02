@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Rifle : MonoBehaviour
 {
     public float balas;
     public float maxBalas;
     public Animator animator;
+
+    public TextMeshProUGUI text;
+    
     public void disparar(float tiempoDisparo, Bala bala)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && tiempoDisparo + 0.4f < Time.time && balas > 0)
@@ -16,7 +20,9 @@ public class Rifle : MonoBehaviour
             Debug.Log("Disparo");
             tiempoDisparo = Time.time;
             balas -= 1;
-            Debug.Log(balas + "/" + maxBalas);
+
+            
+            
         }
     }
     public void recargar()
