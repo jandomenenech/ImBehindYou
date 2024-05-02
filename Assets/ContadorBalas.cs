@@ -7,6 +7,7 @@ public class ContadorBalas : MonoBehaviour
 {
     public Rifle rifle;
     public TextMeshProUGUI text;
+    public CanvaCambioArma armas;
     void Start()
     {
         text.text = rifle.balas + "/" + rifle.maxBalas;
@@ -14,6 +15,15 @@ public class ContadorBalas : MonoBehaviour
 
     void Update()
     {
-        text.text = rifle.balas + "/" + rifle.maxBalas;
+        
+        if (armas.image.texture.Equals(armas.imagenes[0]))
+        {
+            text.text = rifle.balas + "/" + rifle.maxBalas;
+        }
+        if (armas.image.texture.Equals(armas.imagenes[1]))
+        {
+            text.text = rifle.balasRifle + "/" + rifle.maxBalasRifle;
+        }
+        
     }
 }
