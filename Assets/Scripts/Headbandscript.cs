@@ -1,8 +1,10 @@
 using UnityEngine;
+using TMPro;
 
 public class HeadbandScript : MonoBehaviour
 {
     public Light headLight; // Reference to the Light component
+    public TextMeshProUGUI batteryText; // Reference to the TextMeshPro component
 
     private bool isLightOn = false;
     private float lastToggleTime;
@@ -10,8 +12,11 @@ public class HeadbandScript : MonoBehaviour
     private const float blinkThreshold = 20f; // in seconds, when the light should start blinking
     private int blinkCount = 0; // Number of times the light has blinked
 
+    private float remainingBattery;
+
     void Start()
     {
+        remainingBattery = 40f;
         if (headLight == null)
         {
             Debug.LogError("No Light component assigned to HeadbandController.");
@@ -20,6 +25,11 @@ public class HeadbandScript : MonoBehaviour
         {
             // Turn off the light by default
             headLight.enabled = false;
+        }
+
+        if (batteryText == null)
+        {
+            Debug.LogError("No TextMeshPro component assigned to display battery countdown.");
         }
     }
 
@@ -46,10 +56,14 @@ public class HeadbandScript : MonoBehaviour
                 InvokeRepeating("BlinkLight", 0f, 0.5f);
             }
 
+            // Update battery countdown text
+            remainingBattery = batteryLife - (Time.time - lastToggleTime);
+            batteryText.text = "Battery left:" + Mathf.RoundToInt(remainingBattery) + " s";
+
             // Debug log for battery life less than 40 seconds
-            if (Time.time - lastToggleTime <= 40f)
+            if (remainingBattery <= 40f)
             {
-                Debug.Log("Battery life: " + (batteryLife - (Time.time - lastToggleTime)) + " seconds");
+                Debug.Log("Battery life: " + remainingBattery + " seconds");
             }
         }
     }
@@ -74,6 +88,7 @@ public class HeadbandScript : MonoBehaviour
         isLightOn = false;
         CancelInvoke("BlinkLight"); // Cancel blinking
         blinkCount = 0; // Reset blink count
+        batteryText.text = ""; // Clear battery countdown text
     }
 
     void BlinkLight()

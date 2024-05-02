@@ -15,7 +15,7 @@ public class Armas : MonoBehaviour
 
     void Update()
     {
-       // rifle.disparar();
-        //rifle.recargar();
+        rifle.Disparar(time, bala);
+        rifle.recargar();
     }
 }

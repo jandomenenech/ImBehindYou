@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Rifle : MonoBehaviour
 {
@@ -38,7 +39,9 @@ public class Rifle : MonoBehaviour
             Debug.Log("Disparo");
             tiempo = Time.time;
             balas -= 1;
-            Debug.Log(balas + "/" + maxBalas);
+            
+           
+            
         }
     }
     public void recargar(Animator ani)

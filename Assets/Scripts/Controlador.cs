@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Controlador : MonoBehaviour
@@ -16,6 +17,8 @@ public class Controlador : MonoBehaviour
     private float tiempo;
     [SerializeField] private GameObject armas;
     private Animator animator;
+
+    
     Vector3 inicial;
     void Start()
     {
