@@ -11,7 +11,7 @@ public class Objeto : MonoBehaviour
     [SerializeField] private Transform personaje;
     [SerializeField] private Transform objeto;
     [SerializeField] private Inventario inventario;
-     public GameObject cajainv;
+    //public GameObject cajainv;
     private int contador;
     private float time;
 
@@ -32,10 +32,10 @@ public class Objeto : MonoBehaviour
 
             animacionCaja();
 
-            if(time < Time.time + 1f){
+          /*  if(time < Time.time + 1f){
                 cajainv.SetActive(true);
             }
-
+          */
 
         }
         if (esAccesorio || esConsumible)

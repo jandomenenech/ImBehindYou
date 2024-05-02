@@ -14,7 +14,6 @@ public class Controlador : MonoBehaviour
     [SerializeField] private GameObject camara;
     [SerializeField] private Bala bala;
     [SerializeField] private Rifle rifle;
-    [SerializeField] private TextMeshProUGUI text;
     private float tiempo;
 
     private Animator animator;
@@ -58,7 +57,8 @@ public class Controlador : MonoBehaviour
         Run(Walk());
        
         animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
-        rifle.disparar(tiempo,bala);
+        
+        rifle.Disparar(tiempo, bala);
         rifle.recargar();
        
     }

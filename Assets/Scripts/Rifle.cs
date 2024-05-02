@@ -10,9 +10,12 @@ public class Rifle : MonoBehaviour
     public Animator animator;
 
     public TextMeshProUGUI text;
-    
-    public void disparar(float tiempoDisparo, Bala bala)
+
+  
+    public void Disparar(float tiempoDisparo, Bala bala)
+
     {
+       
         if (Input.GetKeyDown(KeyCode.Mouse0) && tiempoDisparo + 0.4f < Time.time && balas > 0)
         {
             animator.SetTrigger("Disparar");
@@ -20,8 +23,8 @@ public class Rifle : MonoBehaviour
             Debug.Log("Disparo");
             tiempoDisparo = Time.time;
             balas -= 1;
-
             
+           
             
         }
     }

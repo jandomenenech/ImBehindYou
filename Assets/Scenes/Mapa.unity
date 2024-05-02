@@ -2112,7 +2112,6 @@ MonoBehaviour:
   personaje: {fileID: 663815187}
   objeto: {fileID: 169524068}
   inventario: {fileID: 1751601870}
-  cajainv: {fileID: 0}
 --- !u!4 &169524068 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: a15e5de962866ce45acb22b3ac929cbf, type: 3}
@@ -5302,8 +5301,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5554,7 +5553,6 @@ MonoBehaviour:
   personaje: {fileID: 663815187}
   objeto: {fileID: 466710801}
   inventario: {fileID: 1751601870}
-  cajainv: {fileID: 0}
 --- !u!4 &466710801 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 00a0f2a547a044a4b9b2854bc7e8aadd, type: 3}
@@ -6053,7 +6051,6 @@ MonoBehaviour:
   personaje: {fileID: 663815187}
   objeto: {fileID: 522558167}
   inventario: {fileID: 1751601870}
-  cajainv: {fileID: 0}
 --- !u!1 &526492259
 GameObject:
   m_ObjectHideFlags: 0
@@ -8874,7 +8871,6 @@ MonoBehaviour:
   personaje: {fileID: 663815187}
   objeto: {fileID: 677179907}
   inventario: {fileID: 1751601870}
-  cajainv: {fileID: 0}
 --- !u!95 &677179906
 Animator:
   serializedVersion: 7
@@ -10328,6 +10324,7 @@ GameObject:
   - component: {fileID: 804075624}
   - component: {fileID: 804075626}
   - component: {fileID: 804075625}
+  - component: {fileID: 804075627}
   m_Layer: 5
   m_Name: Weapon
   m_TagString: Untagged
@@ -10389,6 +10386,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804075623}
   m_CullTransparentMesh: 1
+--- !u!114 &804075627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804075623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55829c650449674f92ababf174cf01b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imagenes:
+  - {fileID: 2800000, guid: 69b4fcba88a431545a169cb1893a0c52, type: 3}
+  - {fileID: 2800000, guid: b71a3976b4fedfb4da55e3ea807682ab, type: 3}
+  - {fileID: 2800000, guid: 3abf4161f3b6c894e99482ed96ea266c, type: 3}
+  image: {fileID: 804075625}
 --- !u!64 &824673090
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11158,7 +11172,6 @@ MonoBehaviour:
   personaje: {fileID: 663815187}
   objeto: {fileID: 878821166}
   inventario: {fileID: 1751601870}
-  cajainv: {fileID: 0}
 --- !u!4 &878821166 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 213a681a440b41b4a9baf445324a5e44, type: 3}
@@ -14205,6 +14218,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170975168}
   m_CullTransparentMesh: 1
+--- !u!114 &1178064517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5377440875873572823, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+  m_PrefabInstance: {fileID: 4160305607398027807}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d138ac1854ebe2499046d57af08cf53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1179717738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17079,7 +17103,6 @@ MonoBehaviour:
   personaje: {fileID: 663815187}
   objeto: {fileID: 1447211768}
   inventario: {fileID: 1751601870}
-  cajainv: {fileID: 0}
 --- !u!64 &1454227043
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23097,6 +23120,7 @@ GameObject:
   - component: {fileID: 1960509024}
   - component: {fileID: 1960509026}
   - component: {fileID: 1960509025}
+  - component: {fileID: 1960509027}
   m_Layer: 5
   m_Name: AmmoDisplay
   m_TagString: Untagged
@@ -23222,6 +23246,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960509023}
   m_CullTransparentMesh: 1
+--- !u!114 &1960509027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960509023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af71ce8c68cd0bb428a7f102a789e6d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rifle: {fileID: 1178064517}
+  text: {fileID: 1960509025}
 --- !u!1 &1966321202
 GameObject:
   m_ObjectHideFlags: 0
@@ -23677,8 +23715,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
