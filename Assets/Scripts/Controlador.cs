@@ -14,7 +14,7 @@ public class Controlador : MonoBehaviour
     [SerializeField] private Bala bala;
     [SerializeField] private Rifle rifle;
     private float tiempo;
-
+    [SerializeField] private GameObject armas;
     private Animator animator;
     Vector3 inicial;
     void Start()
@@ -34,17 +34,6 @@ public class Controlador : MonoBehaviour
         Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
         rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
 
-
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        transform.Rotate(Vector3.up * mouseX);
-
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
-        camara.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
@@ -52,13 +41,15 @@ public class Controlador : MonoBehaviour
 
         gahterObject();
         Run(Walk());
-       
+
         animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
-        rifle.disparar(tiempo,bala);
-        rifle.recargar();
-        
-       
+        rifle.disparar(animator);
+        rifle.recargar(animator);
+        rifle.animarCuchillo(animator);
+
     }
+
+
 
     public void Run(bool caminando)
     {
@@ -101,9 +92,11 @@ public class Controlador : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             animator.SetBool("PressE", true);
+            
         }
         else
         {
+            
             animator.SetBool("PressE", false);
         }
 
