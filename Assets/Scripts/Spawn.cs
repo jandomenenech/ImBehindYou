@@ -40,7 +40,6 @@ public class Spawn : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No spawnable objects assigned to the list!");
         }
     }
 }

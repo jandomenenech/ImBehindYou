@@ -22,7 +22,6 @@ public class StaminaSystem : MonoBehaviour
     void Start()
     {
         UpdateStaminaText();
-        inv = GameObject.FindGameObjectWithTag("Inventario").GetComponent<Inventario>();
     }
 
     void Update()
@@ -113,7 +112,7 @@ public void IncreaseStamina(float amount)
     void useBottle()
     {
      int contador  = 0;
-     if(Input.GetKeyDown(KeyCode.Alpha7))
+     if(Input.GetKeyDown(KeyCode.Alpha5))
      {
         foreach(GameObject obj in inv.inventario)
         {

@@ -19,8 +19,7 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        UpdateMaxHealthText();
-        inv = GameObject.FindGameObjectWithTag("Inventario").GetComponent<Inventario>();
+
 
     }
 
@@ -55,10 +54,7 @@ public class HealthSystem : MonoBehaviour
         healthText.text = currentHealth.ToString();
     }
 
-    void UpdateMaxHealthText()
-    {
-        maxHealthText.text = maxHealth.ToString();
-    }
+
 
     void EndGame()
     {
@@ -82,7 +78,7 @@ void UseMedkit()
 {
     int contador = 0;
     
-        if (Input.GetKeyDown(KeyCode.Alpha5))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
 
              foreach(GameObject obj in inv.inventario)

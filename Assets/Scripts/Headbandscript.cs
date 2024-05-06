@@ -29,7 +29,6 @@ public class HeadbandScript : MonoBehaviour
 
         if (batteryText == null)
         {
-            Debug.LogError("No TextMeshPro component assigned to display battery countdown.");
         }
     }
 
