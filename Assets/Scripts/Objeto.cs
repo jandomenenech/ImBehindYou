@@ -12,7 +12,7 @@ public class Objeto : MonoBehaviour
     [SerializeField] private Transform objeto;
     [SerializeField] private Inventario inventario;
     [SerializeField] public Texture textura;
-    //public GameObject cajainv;
+    public GameObject cajainv;
     private int contador;
     private float time;
 
@@ -32,11 +32,7 @@ public class Objeto : MonoBehaviour
         {
 
             animacionCaja();
-
-          /*  if(time < Time.time + 1f){
-                cajainv.SetActive(true);
-            }
-          */
+            
 
         }
         if (esAccesorio || esConsumible)
@@ -52,11 +48,19 @@ public class Objeto : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            cajainv.SetActive(true);
+
             if (distancia < 2f && contador != 1)
             {
                 animCaja.SetInteger("Random", random);
                 contador = 1;
+                
+                
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            cajainv?.SetActive(false);
         }
     }
 

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class ItemsCaja : MonoBehaviour
 {
     [SerializeField] private List<Texture> imagenes;
-    [SerializeField] private RawImage image;
+    [SerializeField] private List<RawImage> image;
     void Start()
     {
-        
+        objetosAleatorios();
     }
 
     
@@ -20,9 +20,11 @@ public class ItemsCaja : MonoBehaviour
 
     public void objetosAleatorios()
     {
-        foreach (Texture tex in imagenes)
+        foreach (RawImage i in image)
         {
-           image.texture = tex;
+            i.texture = imagenes[Random.Range(0, imagenes.Count)];
         }
+           
+        
     }
 }
