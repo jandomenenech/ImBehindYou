@@ -37,10 +37,7 @@ public class Controlador : MonoBehaviour
         Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
         rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
+       
 
         gahterObject();
         Run(Walk());

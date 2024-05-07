@@ -11,6 +11,7 @@ public class Objeto : MonoBehaviour
     [SerializeField] private Transform personaje;
     [SerializeField] private Transform objeto;
     [SerializeField] private Inventario inventario;
+    [SerializeField] public Texture textura;
     //public GameObject cajainv;
     private int contador;
     private float time;
@@ -68,7 +69,7 @@ public class Objeto : MonoBehaviour
             if (distancia < 3f && contador != 1)
             {
                 contador = 1;
-                inventario.guardarEnInventario(gameObject);
+                inventario.guardarEnInventario(gameObject,textura);
             }
         }
         

@@ -121,11 +121,11 @@ public void IncreaseStamina(float amount)
             IncreaseStamina(40);
             inv.inventario.Remove(obj);
             Destroy(obj);
-            foreach(TextMeshProUGUI i in inv.nombreInventario)
+            foreach(GameObject i in inv.inventario)
             {
-               if(i.text.Equals("WaterBottle") && contador != 1)
+               if(i.tag.Equals("Bottle") && contador != 1)
                {
-                 i.text = "-";
+                 
                 contador = 1;
                }
             }

@@ -24,6 +24,10 @@ public class ContadorBalas : MonoBehaviour
         {
             text.text = rifle.balasRifle + "/" + rifle.maxBalasRifle;
         }
+        if (armas.image.texture.Equals(armas.imagenes[2]))
+        {
+            text.text = "";
+        }
         
     }
 }

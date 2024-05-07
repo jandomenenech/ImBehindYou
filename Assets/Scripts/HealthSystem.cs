@@ -10,7 +10,6 @@ public class HealthSystem : MonoBehaviour
     private int currentHealth;
 
     public TextMeshProUGUI healthText;
-    public TextMeshProUGUI maxHealthText;
 
     [SerializeField] private Inventario inv;
 
@@ -87,12 +86,11 @@ void UseMedkit()
                    IncreaseHealth(40);
                    inv.inventario.Remove(obj);
                    Destroy(obj);
-                   foreach (TextMeshProUGUI i in inv.nombreInventario)
+                   foreach (GameObject g  in inv.inventario)
                    {
 
-                    if(i.text.Equals("medkit") && contador != 1)
+                    if(g.tag.Equals("Medkit") && contador != 1)
                     {
-                        i.text = "-";
                         contador = 1;
                     }
                    }
@@ -121,12 +119,11 @@ void UseTin()
                    IncreaseHealth(15);
                    inv.inventario.Remove(obj);
                    Destroy(obj);
-                   foreach (TextMeshProUGUI i in inv.nombreInventario)
+                   foreach (GameObject i in inv.inventario)
                    {
 
-                    if(i.text.Equals("tin") && contador != 1)
+                    if(i.tag.Equals("Tin") && contador != 1)
                     {
-                        i.text = "-";
                         contador = 1;
                     }
                    }
