@@ -12,9 +12,9 @@ public class Objeto : MonoBehaviour
     [SerializeField] private Transform objeto;
     [SerializeField] private Inventario inventario;
     [SerializeField] public Texture textura;
+    [SerializeField] public ItemsCaja itemsCaja;
     public GameObject cajainv;
     private int contador;
-    private float time;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class Objeto : MonoBehaviour
             animCaja = GetComponent<Animator>();
         }
         contador = 0;
-        time = Time.time;
+
     }
 
     void Update()
@@ -48,19 +48,21 @@ public class Objeto : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            cajainv.SetActive(true);
-
-            if (distancia < 2f && contador != 1)
+            if (distancia < 2f)
             {
-                animCaja.SetInteger("Random", random);
-                contador = 1;
-                
-                
+                if (contador != 1)
+                {
+                    animCaja.SetInteger("Random", random);
+                    contador = 1;
+                }
+                itemsCaja.objetosCaja();
+                cajainv.SetActive(true);
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             cajainv?.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
