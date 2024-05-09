@@ -55,7 +55,7 @@ public class Controlador : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) && caminando)
         {
-            moveSpeed = 850f;
+            moveSpeed = 1250f;
             camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
         else if (Input.GetKey(KeyCode.LeftControl))
@@ -70,7 +70,7 @@ public class Controlador : MonoBehaviour
         }
         else if (caminando)
         {
-            moveSpeed = 600f;
+            moveSpeed = 1000f;
             camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
       

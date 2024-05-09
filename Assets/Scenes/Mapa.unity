@@ -18245,6 +18245,52 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5305871256624515941, guid: 9efb491aa7699f440adbe9de5c31ea39, type: 3}
+--- !u!1 &1382197398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1382197400}
+  - component: {fileID: 1382197399}
+  m_Layer: 0
+  m_Name: launcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1382197399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382197398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb10ba22e8ed88419e193f0b943243c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1751601879}
+  spawnPoint: {fileID: 1492753595}
+--- !u!4 &1382197400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382197398}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 538.89526, y: 83.80745, z: 492.84866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1387471026
 GameObject:
   m_ObjectHideFlags: 0
@@ -22271,6 +22317,62 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 404975331357009683, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
   m_PrefabInstance: {fileID: 7046904171445749180}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1751601879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646920199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 0
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1751601880}
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1751601880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646920199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!1 &1754063049
 GameObject:
   m_ObjectHideFlags: 0
@@ -27440,6 +27542,14 @@ PrefabInstance:
       propertyPath: bala
       value: 
       objectReference: {fileID: 615554246}
+    - target: {fileID: 200183499174093442, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+      propertyPath: moveSpeed
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 200183499174093442, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+      propertyPath: mouseSensitivity
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 424162818722627894, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
       propertyPath: texture
       value: 
@@ -27627,6 +27737,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6074516707761463905, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1751601876}
+    - targetCorrespondingSourceObject: {fileID: 6074516707761463905, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1751601879}
+    - targetCorrespondingSourceObject: {fileID: 6074516707761463905, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1751601880}
     - targetCorrespondingSourceObject: {fileID: 5232978021538733889, guid: a9ebc70b7a630234499bc574587d8a72, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7046904171445749183}
@@ -27805,3 +27921,4 @@ SceneRoots:
   - {fileID: 910853094}
   - {fileID: 747734385}
   - {fileID: 885215457}
+  - {fileID: 1382197400}
