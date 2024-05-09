@@ -60,7 +60,7 @@ public class Inventario : MonoBehaviour
         
     }
 
-    void activarInventario()
+    public void activarInventario()
     {
         if (Input.GetKeyDown(KeyCode.I) && inventarioActivo == false)
         {

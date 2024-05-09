@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class ItemsCaja : MonoBehaviour
 {
     [SerializeField] private List<GameObject> objetosAletorios;
-    [SerializeField] private List<GameObject> objetoCaja;
+    [SerializeField] public List<GameObject> objetoCaja;
     [SerializeField] public List<Texture> imagenes;
-    [SerializeField] private List<RawImage> image;
+    [SerializeField] public List<RawImage> image;
     void Start()
     {
         for (int i = 0; i < image.Count; i++)
@@ -21,7 +21,7 @@ public class ItemsCaja : MonoBehaviour
     
     void Update()
     {
-        
+        objetosCaja();
     }
 
     public void objetosAleatorios(int numero)
@@ -53,19 +53,30 @@ public class ItemsCaja : MonoBehaviour
             {
                 image[i].texture = imagenes[0]; 
             }
-            if (objetoCaja[i].tag.Equals("Bottle"))
+            else if (objetoCaja[i].tag.Equals("Bottle"))
             {
                 image[i].texture = imagenes[2];
             }
-            if (objetoCaja[i].tag.Equals("CargadorPistol"))
+            else if (objetoCaja[i].tag.Equals("CargadorPistol"))
             {
                 image[i].texture = imagenes[3];
             }
-            if (objetoCaja[i].tag.Equals("CargadorRifle"))
+            else if (objetoCaja[i].tag.Equals("CargadorRifle"))
             {
                 image[i].texture = imagenes[1];
+            }
+            else if(objetoCaja[i] == null) 
+            {
+                image[i].texture = imagenes[4];
             }
 
         }
     }
+
+    public void cogerItem(int b)
+    {
+        objetoCaja.RemoveAt(b);
+        image[b].texture = null; 
+    }
+
 }

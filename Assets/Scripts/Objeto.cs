@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Objeto : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Objeto : MonoBehaviour
     [SerializeField] private Inventario inventario;
     [SerializeField] public Texture textura;
     [SerializeField] public ItemsCaja itemsCaja;
+    [SerializeField] private MostrarInvCaja inv;
     public GameObject cajainv;
     private int contador;
 
@@ -57,6 +59,29 @@ public class Objeto : MonoBehaviour
                 }
                 itemsCaja.objetosCaja();
                 cajainv.SetActive(true);
+                inv.mostrarInventario(itemsCaja.objetoCaja);
+                inventario.activarInventario();
+
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                RawImage rawImage = hit.collider.GetComponent<RawImage>();
+                if (rawImage != null)
+                {
+                    int index = itemsCaja.image.IndexOf(rawImage);
+                    if (index != -1)
+                    {
+                        itemsCaja.cogerItem(index);
+                        inv.mostrarInventario(itemsCaja.objetoCaja);
+                    }
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
