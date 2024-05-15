@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Photon.Pun;
 
-public class Controlador : MonoBehaviour
+public class Controlador : MonoBehaviourPunCallbacks
 {
     public float moveSpeed = 0f;
     public float mouseSensitivity = 100f;
@@ -31,6 +32,7 @@ public class Controlador : MonoBehaviour
 
     void Update()
     {
+        
 
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");

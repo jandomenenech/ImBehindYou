@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class Launcher : MonoBehaviour
+public class Launcher : MonoBehaviourPunCallbacks
 {
 
     public PhotonView player;
