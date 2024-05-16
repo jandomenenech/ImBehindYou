@@ -97,10 +97,10 @@ void UseMedkit()
                    break;
                 }
             }
-            // inv.inventario.Remove(obj); // Opcional: elimina el medkit del inventario
+
         }
         else {
-            Debug.Log("No se cura");
+
         }
    
 }
@@ -130,10 +130,9 @@ void UseTin()
                    break;
                 }
             }
-            // inv.inventario.Remove(obj); // Opcional: elimina el medkit del inventario
+
         }
         else {
-            Debug.Log("No se cura");
         }
    
 }
