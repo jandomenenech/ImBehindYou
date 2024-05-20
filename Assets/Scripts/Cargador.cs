@@ -17,14 +17,6 @@ public class Cargador : MonoBehaviour
 
     void Update()
     {
-        if (cargadorRifle)
-        {
-
-        }
-        if (cargadorPistol)
-        {
-
-        }
     }
 
     public void cargaPistol()
@@ -50,4 +42,6 @@ public class Cargador : MonoBehaviour
             }
         }
     }
+
+   
 }

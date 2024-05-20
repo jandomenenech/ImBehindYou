@@ -13,6 +13,7 @@ public class Inventario : MonoBehaviour
     [SerializeField] public List<GameObject> inventario;
     private Transform personaje;
     [SerializeField] private GameObject panelInventario;
+    [SerializeField] 
     private bool inventarioActivo;
     int contador;
 
@@ -58,6 +59,42 @@ public class Inventario : MonoBehaviour
             contador = 0;
         }
         
+    }
+
+    public bool tengoCargadorRifle()
+    {
+        foreach (RawImage t in nombreInventario)
+        {
+            if (t.texture!=null)
+            {
+                if (t.texture.name == "cargadorR")
+                {
+                    t.texture = null;
+                    return true;
+                }
+            }
+          
+            
+        }
+        return false;
+    }
+
+    public bool tengoCargadorPistol()
+    {
+        foreach (RawImage t in nombreInventario)
+        {
+            if (t.texture !=null)
+            {
+                if (t.texture.name == "cargadorP")
+                {
+                    t.texture = null;
+                    return true;
+
+                }
+            }
+           
+        }
+        return false;
     }
 
     public void activarInventario()

@@ -9,9 +9,7 @@ public class Objeto : MonoBehaviour
     [SerializeField] private bool esConsumible;
     [SerializeField] private bool esAccesorio;
     private Animator animCaja;
-    [SerializeField] private Transform personaje;
     [SerializeField] private Transform objeto;
-    [SerializeField] private Inventario inventario;
     [SerializeField] public Texture textura;
     [SerializeField] public ItemsCaja itemsCaja;
     [SerializeField] private MostrarInvCaja inv;
@@ -30,6 +28,8 @@ public class Objeto : MonoBehaviour
 
     void Update()
     {
+     
+
         if (esCaja)
         {
 
@@ -45,42 +45,27 @@ public class Objeto : MonoBehaviour
 
     void animacionCaja()
     {
-        float distancia = Vector3.Distance(personaje.position, objeto.position);
-        int random = Random.Range(1, 5);
-
-        if (Input.GetKeyDown(KeyCode.E))
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
         {
-            if (distancia < 2f)
+            Inventario inventarioPlayer = player.GetComponent<Inventario>();
+            float distancia = Vector3.Distance(player.transform.position, objeto.position);
+            int random = Random.Range(1, 5);
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (contador != 1)
+                if (distancia < 2f)
                 {
-                    animCaja.SetInteger("Random", random);
-                    contador = 1;
-                }
-                itemsCaja.objetosCaja();
-                cajainv.SetActive(true);
-                inv.mostrarInventario(itemsCaja.objetoCaja);
-                inventario.activarInventario();
-
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                RawImage rawImage = hit.collider.GetComponent<RawImage>();
-                if (rawImage != null)
-                {
-                    int index = itemsCaja.image.IndexOf(rawImage);
-                    if (index != -1)
+                    if (contador != 1)
                     {
-                        itemsCaja.cogerItem(index);
-                        inv.mostrarInventario(itemsCaja.objetoCaja);
+                        animCaja.SetInteger("Random", random);
+                        contador = 1;
                     }
+                    itemsCaja.objetosCaja();
+                    cajainv.SetActive(true);
+                    inv.mostrarInventario(itemsCaja.objetoCaja);
+                    inventarioPlayer.activarInventario();
+
                 }
             }
         }
@@ -93,14 +78,19 @@ public class Objeto : MonoBehaviour
 
     void recogerObjeto()
     {
-        float distancia = Vector3.Distance(personaje.position, objeto.position);
-
-        if (Input.GetKeyDown(KeyCode.E))
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
         {
-            if (distancia < 3f && contador != 1)
+            Inventario inventarioPlayer = player.GetComponent<Inventario>();
+            float distancia = Vector3.Distance(player.transform.position, objeto.position);
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                contador = 1;
-                inventario.guardarEnInventario(gameObject,textura);
+                if (distancia < 3f && contador != 1)
+                {
+                    contador = 1;
+                    inventarioPlayer.guardarEnInventario(gameObject, textura);
+                }
             }
         }
         

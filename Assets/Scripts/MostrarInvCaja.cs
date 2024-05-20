@@ -55,7 +55,7 @@ public class MostrarInvCaja : MonoBehaviour
     {
         for (int i = 0; i < imagenes.Count; i++)
         {
-            imagenes[i].texture = items[i];
+            imagenes[i].texture = objetos[i];
         }
     }
 }

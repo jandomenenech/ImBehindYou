@@ -14,6 +14,7 @@ public class Rifle : MonoBehaviour
     public float maxBalasRifle;
     public Animator animator;
     private float tiempo;
+    public Inventario i;
     [SerializeField] private Bala bala;
 
     void Start()
@@ -31,12 +32,15 @@ public class Rifle : MonoBehaviour
         {
             dispararRifle(animator);
             recargarRifle(animator);
+
         }
          if (pistola)
         {
             disparar(animator);
             recargar(animator);
-        }   
+        }
+
+        sumarBalasRifle();
     }
     public void disparar(Animator anim)
     {
@@ -108,4 +112,16 @@ public class Rifle : MonoBehaviour
             animator.SetTrigger("Inspeccion");
         }
     }
+    public void sumarBalasRifle()
+    {
+        if (i.tengoCargadorPistol())
+        {
+            maxBalas += 12;
+        }
+        if (i.tengoCargadorRifle())
+        {
+            maxBalasRifle += 24;
+        }
+    }
+
 }
