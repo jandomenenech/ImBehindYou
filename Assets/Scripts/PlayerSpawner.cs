@@ -1,25 +1,29 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    public Transform[] spawnPoints; // Array to hold your spawn points
-    public GameObject player;
+    public GameObject playerPrefab;
+    public Transform[] spawnPoints;
 
     void Start()
     {
-        // Check if there are any spawn points
-        if (spawnPoints.Length == 0)
+        if (PhotonNetwork.IsConnected)
         {
-            Debug.LogError("No spawn points assigned!");
-            return;
+            SpawnPlayer();
         }
-
-        // Get a random index to select a spawn point
-        int randomIndex = Random.Range(0, spawnPoints.Length);
-
-        // Teleport the player to the selected spawn point
-        Transform spawnPoint = spawnPoints[randomIndex];
-        player.transform.position = spawnPoint.position;
-        player.transform.rotation = spawnPoint.rotation;
+        else
+        {
+            Debug.LogError("Not connected to Photon. Cannot spawn player.");
+        }
     }
+
+    void SpawnPlayer()
+    {
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject playerObject = PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
+        PhotonView photonView = playerObject.GetComponent<PhotonView>();
+    }
+
+
 }

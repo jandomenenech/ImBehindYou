@@ -9,6 +9,8 @@ TagManager:
   - Medkit
   - Tin
   - Bottle
+  - CargadorPistol
+  - CargadorRifle
   layers:
   - Default
   - TransparentFX

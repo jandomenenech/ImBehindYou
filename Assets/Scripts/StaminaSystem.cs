@@ -22,7 +22,6 @@ public class StaminaSystem : MonoBehaviour
     void Start()
     {
         UpdateStaminaText();
-        inv = GameObject.FindGameObjectWithTag("Inventario").GetComponent<Inventario>();
     }
 
     void Update()
@@ -113,7 +112,7 @@ public void IncreaseStamina(float amount)
     void useBottle()
     {
      int contador  = 0;
-     if(Input.GetKeyDown(KeyCode.Alpha7))
+     if(Input.GetKeyDown(KeyCode.Alpha5))
      {
         foreach(GameObject obj in inv.inventario)
         {
@@ -122,11 +121,11 @@ public void IncreaseStamina(float amount)
             IncreaseStamina(40);
             inv.inventario.Remove(obj);
             Destroy(obj);
-            foreach(TextMeshProUGUI i in inv.nombreInventario)
+            foreach(GameObject i in inv.inventario)
             {
-               if(i.text.Equals("WaterBottle") && contador != 1)
+               if(i.tag.Equals("Bottle") && contador != 1)
                {
-                 i.text = "-";
+                 
                 contador = 1;
                }
             }
@@ -134,7 +133,7 @@ public void IncreaseStamina(float amount)
         }
         }
      } else{
-        Debug.Log("No sube stamina");
+
      }
     }
 }

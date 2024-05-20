@@ -4,13 +4,16 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using WebSocketSharp;
+using System;
 
 public class Inventario : MonoBehaviour
 {
-    [SerializeField] public List<TextMeshProUGUI> nombreInventario;
+    [SerializeField] public List<RawImage> nombreInventario;
     [SerializeField] public List<GameObject> inventario;
     private Transform personaje;
     [SerializeField] private GameObject panelInventario;
+    [SerializeField] 
     private bool inventarioActivo;
     int contador;
 
@@ -25,35 +28,80 @@ public class Inventario : MonoBehaviour
     void Update()
     {
         activarInventario();
+        objetosVacios();
     }
 
-    public void guardarEnInventario(GameObject objeto)
+    public void guardarEnInventario(GameObject objeto, Texture textura)
     {
-        
-        foreach (TextMeshProUGUI t in nombreInventario)
+        if (objeto.tag.Equals("Medkit") || objeto.tag.Equals("Bottle"))
         {
-            string texto = t.text.ToString().Trim();
-            if (texto.Equals("-") && contador!=1)
-            {
-                string[] hola = objeto.name.ToString().Split("(");
-                t.text = hola[0];
-                inventario.Add(objeto);
-                objeto.SetActive(false);
-                objeto.transform.position = personaje.position;
-                contador = 1;
-            }
-            else
-            {
-                Debug.Log("No va");
-            }
+            inventario.Add(objeto);
+            objeto.SetActive(false);
+            objeto.transform.position = personaje.position;
         }
-        contador = 0;
+        else
+        {
+            foreach (RawImage t in nombreInventario)
+            {
+                if (t.texture == null && contador != 1)
+                {
+                    t.texture = textura;
+                    inventario.Add(objeto);
+                    objeto.SetActive(false);
+                    objeto.transform.position = personaje.position;
+                    contador = 1;
+                }
+                else
+                {
+                    Debug.Log("No va");
+                }
+            }
+            contador = 0;
+        }
+        
     }
 
-    void activarInventario()
+    public bool tengoCargadorRifle()
+    {
+        foreach (RawImage t in nombreInventario)
+        {
+            if (t.texture!=null)
+            {
+                if (t.texture.name == "cargadorR")
+                {
+                    t.texture = null;
+                    return true;
+                }
+            }
+          
+            
+        }
+        return false;
+    }
+
+    public bool tengoCargadorPistol()
+    {
+        foreach (RawImage t in nombreInventario)
+        {
+            if (t.texture !=null)
+            {
+                if (t.texture.name == "cargadorP")
+                {
+                    t.texture = null;
+                    return true;
+
+                }
+            }
+           
+        }
+        return false;
+    }
+
+    public void activarInventario()
     {
         if (Input.GetKeyDown(KeyCode.I) && inventarioActivo == false)
         {
+            Cursor.lockState = CursorLockMode.None;  
             inventarioActivo = true;
             panelInventario.SetActive(inventarioActivo);
         }
@@ -61,6 +109,22 @@ public class Inventario : MonoBehaviour
         {
             inventarioActivo=false;
             panelInventario.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
+    
+    void objetosVacios()
+    {
+        foreach (RawImage t in nombreInventario)
+        {
+            if (t.texture == null)
+            {
+                t.color = new Color(255,255,255,0f);
+            }
+            else
+            {
+                t.color = new Color(255,255,255,1f);
+            }
+    }
+}
 }

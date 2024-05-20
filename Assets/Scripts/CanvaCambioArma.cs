@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class CanvaCambioArma : MonoBehaviour
 {
-    [SerializeField] private Texture[] imagenes;
-    [SerializeField] private RawImage image;
+    [SerializeField] public Texture[] imagenes;
+    [SerializeField] public RawImage image;
 
     void Start()
     {

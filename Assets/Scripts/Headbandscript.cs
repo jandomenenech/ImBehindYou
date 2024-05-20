@@ -29,7 +29,6 @@ public class HeadbandScript : MonoBehaviour
 
         if (batteryText == null)
         {
-            Debug.LogError("No TextMeshPro component assigned to display battery countdown.");
         }
     }
 
@@ -96,7 +95,7 @@ public class HeadbandScript : MonoBehaviour
         headLight.enabled = !headLight.enabled;
         blinkCount++;
 
-        // If blinked 4 times, stop blinking
+        // If blinked 4 times, stop blinking8
         if (blinkCount >= 4)
         {
             CancelInvoke("BlinkLight");
