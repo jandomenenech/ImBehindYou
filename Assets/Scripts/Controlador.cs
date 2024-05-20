@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Photon.Pun;
 
-public class Controlador : MonoBehaviour
+public class Controlador : MonoBehaviourPunCallbacks
 {
     public float moveSpeed = 0f;
     public float mouseSensitivity = 100f;
@@ -17,8 +18,11 @@ public class Controlador : MonoBehaviour
     private float tiempo;
     [SerializeField] private GameObject armas;
     private Animator animator;
+    [SerializeField]private Camera playerCamera;
+    [SerializeField]private Canvas playerCanvas;
 
-    
+
+
     Vector3 inicial;
     void Start()
     {
@@ -27,25 +31,40 @@ public class Controlador : MonoBehaviour
         animator = GetComponent<Animator>();
         inicial = camara.transform.position;
         rb = GetComponent<Rigidbody>();
+
+
+        if (photonView.IsMine)
+        {
+            playerCamera.gameObject.SetActive(true);
+            playerCanvas.gameObject.SetActive(true);
+        }
+        else
+        {
+            playerCamera.gameObject.SetActive(false);
+            playerCanvas.gameObject.SetActive(false);
+        }
     }
 
     void Update()
     {
+        if (photonView.IsMine)
+        {
 
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-        Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
-        rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
+            float moveX = Input.GetAxis("Horizontal");
+            float moveZ = Input.GetAxis("Vertical");
+            Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
+            rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
 
-       
 
-        gahterObject();
-        Run(Walk());
 
-        animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
-        rifle.disparar(animator);
-        rifle.recargar(animator);
-        rifle.animarCuchillo(animator);
+            gahterObject();
+            Run(Walk());
+
+            animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
+            rifle.disparar(animator);
+            rifle.recargar(animator);
+            rifle.animarCuchillo(animator);
+        }
 
     }
 
@@ -55,7 +74,7 @@ public class Controlador : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) && caminando)
         {
-            moveSpeed = 850f;
+            moveSpeed = 1250f;
             camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
         else if (Input.GetKey(KeyCode.LeftControl))
@@ -70,7 +89,7 @@ public class Controlador : MonoBehaviour
         }
         else if (caminando)
         {
-            moveSpeed = 600f;
+            moveSpeed = 1000f;
             camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
       

@@ -133,7 +133,7 @@ public void IncreaseStamina(float amount)
         }
         }
      } else{
-        Debug.Log("No sube stamina");
+
      }
     }
 }
