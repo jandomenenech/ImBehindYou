@@ -32,15 +32,17 @@ public class Rifle : MonoBehaviour
         {
             dispararRifle(animator);
             recargarRifle(animator);
+            sumarBalasRifle();
 
         }
          if (pistola)
         {
             disparar(animator);
             recargar(animator);
+            sumarBalasRifle();
         }
 
-        sumarBalasRifle();
+      
     }
     public void disparar(Animator anim)
     {
