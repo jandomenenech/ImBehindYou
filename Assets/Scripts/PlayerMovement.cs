@@ -6,14 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float velocidad;
 
-
-
-
-
     private Rigidbody rb;
     private Animator animator;
-    private bool isSpringting = false;
-
    
 
     void Start()
@@ -41,8 +35,8 @@ public class PlayerMovement : MonoBehaviour
             
             transform.rotation = Quaternion.Euler(0, nuevaRotacion.eulerAngles.y, 0);
         }
-
         animator.SetFloat("walk", velocidad);
+        
         
     }
 

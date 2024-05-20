@@ -2,32 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CamaraMovement : MonoBehaviour
+public class MouseLook : MonoBehaviour
 {
-    public Transform target; 
-    public float distance = 5.0f; 
-    public float height = 3.0f; 
-    public float smoothSpeed = 0.125f; 
-
-    private Vector3 offset;
-
-    void Start()
+    public float Sensibilidad = 100;
+    public Transform playerBody;
+    public float xRotacion;
+    public Animator ani;
+    private void Start()
     {
-        offset = new Vector3(0, height, -distance);
+        Cursor.lockState = CursorLockMode.Locked;
+        ani = GetComponent<Animator>();
     }
-
-    void LateUpdate()
+    void Update()
     {
-        if (!target)
-            return;
 
-        Vector3 desiredPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
 
-        transform.LookAt(target);
+        float mouseX = Input.GetAxis("Mouse X") * Sensibilidad * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * Sensibilidad * Time.deltaTime;
+
+        xRotacion -= mouseY;
+        xRotacion = Mathf.Clamp(xRotacion, -90, 90);
+
+        transform.localRotation = Quaternion.Euler(xRotacion, 0, 0);
+
+        playerBody.Rotate(Vector3.up * mouseX);
+
     }
 }
-
 
 

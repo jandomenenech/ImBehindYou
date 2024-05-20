@@ -14,9 +14,7 @@ public class Spawn : MonoBehaviour
         if (!hasInitialized)
         {
             // Add your three GameObjects to the list
-            spawnableObjects.Add(GameObject.Find("medkit"));
-            spawnableObjects.Add(GameObject.Find("lightgrip"));
-            spawnableObjects.Add(GameObject.Find("angledgrip"));
+            
 
             // Set the flag to true to indicate initialization is done
             hasInitialized = true;
@@ -42,7 +40,9 @@ public class Spawn : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No spawnable objects assigned to the list!");
         }
     }
 }
+
+
+

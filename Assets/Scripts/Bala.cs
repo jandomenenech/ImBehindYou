@@ -35,7 +35,7 @@ public class Bala : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Enemigo Golpeado");
             Destroy(gameObject);

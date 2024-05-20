@@ -18,6 +18,7 @@ public class StaminaSystem : MonoBehaviour
 
     public TextMeshProUGUI staminaText; // Reference to the TextMeshPro object displaying stamina
 
+    [SerializeField] private Inventario inv;
     void Start()
     {
         UpdateStaminaText();
@@ -53,6 +54,7 @@ public class StaminaSystem : MonoBehaviour
                     recoveryTimer = 0; // Ensure the timer doesn't go below zero
                 }
             }
+            useBottle();
         }
 
         // Update the zero stamina speed state
@@ -93,5 +95,45 @@ public class StaminaSystem : MonoBehaviour
         {
             return normalSpeed;
         }
+    }
+
+public void IncreaseStamina(float amount)
+{
+    stamina += amount;
+    if (stamina > maxStamina)
+        stamina = maxStamina;
+
+    // Reset the recovery timer when stamina starts increasing
+    if (stamina > 0)
+    {
+        recoveryTimer = recoveryDelay;
+    }
+}
+    void useBottle()
+    {
+     int contador  = 0;
+     if(Input.GetKeyDown(KeyCode.Alpha5))
+     {
+        foreach(GameObject obj in inv.inventario)
+        {
+        if (obj.CompareTag("Bottle"))
+        {
+            IncreaseStamina(40);
+            inv.inventario.Remove(obj);
+            Destroy(obj);
+            foreach(GameObject i in inv.inventario)
+            {
+               if(i.tag.Equals("Bottle") && contador != 1)
+               {
+                 
+                contador = 1;
+               }
+            }
+            break;
+        }
+        }
+     } else{
+
+     }
     }
 }

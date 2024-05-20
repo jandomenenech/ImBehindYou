@@ -10,21 +10,27 @@ public class HealthSystem : MonoBehaviour
     private int currentHealth;
 
     public TextMeshProUGUI healthText;
-    public TextMeshProUGUI maxHealthText; // TextMeshPro for displaying max health
+
+    [SerializeField] private Inventario inv;
+
+
 
     void Start()
     {
         currentHealth = maxHealth;
-        //UpdateHealthText();
-        UpdateMaxHealthText(); // Call to update max health text on start
+
+
     }
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.P))
         {
-            DecreaseHealth(12); // Decrease health by 12 when P is pressed
+            DecreaseHealth(12);
         }
+        UseMedkit();
+        UseTin();
     }
 
     void DecreaseHealth(int amount)
@@ -47,14 +53,89 @@ public class HealthSystem : MonoBehaviour
         healthText.text = currentHealth.ToString();
     }
 
-    void UpdateMaxHealthText()
-    {
-        //maxHealthText.text = maxHealth.ToString(); // Update max health text
-    }
+
 
     void EndGame()
     {
-        Debug.Log("Gameover");
-        
+        Debug.Log("Game Over");
     }
+
+
+
+    void IncreaseHealth(int amount)
+    {
+    currentHealth += amount;
+    if(currentHealth > maxHealth)
+    {
+        currentHealth = maxHealth;
+    }
+    UpdateHealthText();
+    }
+
+
+void UseMedkit()
+{
+    int contador = 0;
+    
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+
+             foreach(GameObject obj in inv.inventario)
+            {
+                if(obj.CompareTag("Medkit")){
+                   IncreaseHealth(40);
+                   inv.inventario.Remove(obj);
+                   Destroy(obj);
+                   foreach (GameObject g  in inv.inventario)
+                   {
+
+                    if(g.tag.Equals("Medkit") && contador != 1)
+                    {
+                        contador = 1;
+                    }
+                   }
+                   break;
+                }
+            }
+
+        }
+        else {
+
+        }
+   
+}
+
+
+void UseTin()
+{
+    int contador = 0;
+    
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+
+             foreach(GameObject obj in inv.inventario)
+            {
+                if(obj.CompareTag("Tin")){
+                   IncreaseHealth(15);
+                   inv.inventario.Remove(obj);
+                   Destroy(obj);
+                   foreach (GameObject i in inv.inventario)
+                   {
+
+                    if(i.tag.Equals("Tin") && contador != 1)
+                    {
+                        contador = 1;
+                    }
+                   }
+                   break;
+                }
+            }
+
+        }
+        else {
+        }
+   
+}
+
+
 }

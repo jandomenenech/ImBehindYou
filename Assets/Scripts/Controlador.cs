@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using Photon.Pun;
 
-public class Controlador : MonoBehaviour
+public class Controlador : MonoBehaviourPunCallbacks
 {
     public float moveSpeed = 0f;
     public float mouseSensitivity = 100f;
@@ -14,8 +16,13 @@ public class Controlador : MonoBehaviour
     [SerializeField] private Bala bala;
     [SerializeField] private Rifle rifle;
     private float tiempo;
-
+    [SerializeField] private GameObject armas;
     private Animator animator;
+    [SerializeField]private Camera playerCamera;
+    [SerializeField]private Canvas playerCanvas;
+
+
+
     Vector3 inicial;
     void Start()
     {
@@ -24,47 +31,50 @@ public class Controlador : MonoBehaviour
         animator = GetComponent<Animator>();
         inicial = camara.transform.position;
         rb = GetComponent<Rigidbody>();
+
+
+        if (photonView.IsMine)
+        {
+            playerCamera.gameObject.SetActive(true);
+            playerCanvas.gameObject.SetActive(true);
+        }
+        else
+        {
+            playerCamera.gameObject.SetActive(false);
+            playerCanvas.gameObject.SetActive(false);
+        }
     }
 
     void Update()
     {
-
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-        Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
-        rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
-
-
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        transform.Rotate(Vector3.up * mouseX);
-
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
-        camara.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (photonView.IsMine)
         {
-            Cursor.lockState = CursorLockMode.None;
+
+            float moveX = Input.GetAxis("Horizontal");
+            float moveZ = Input.GetAxis("Vertical");
+            Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
+            rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
+
+
+
+            gahterObject();
+            Run(Walk());
+
+            animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
+            rifle.disparar(animator);
+            rifle.recargar(animator);
+            rifle.animarCuchillo(animator);
         }
 
-        gahterObject();
-        Run(Walk());
-       
-        animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
-        rifle.disparar(tiempo,bala);
-        rifle.recargar();
-        
-       
     }
+
+
 
     public void Run(bool caminando)
     {
         if (Input.GetKey(KeyCode.LeftShift) && caminando)
         {
-            moveSpeed = 850f;
+            moveSpeed = 1250f;
             camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
         else if (Input.GetKey(KeyCode.LeftControl))
@@ -79,7 +89,7 @@ public class Controlador : MonoBehaviour
         }
         else if (caminando)
         {
-            moveSpeed = 600f;
+            moveSpeed = 1000f;
             camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y, camara.transform.position.z);
         }
       
@@ -101,9 +111,11 @@ public class Controlador : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             animator.SetBool("PressE", true);
+            
         }
         else
         {
+            
             animator.SetBool("PressE", false);
         }
 

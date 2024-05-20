@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Enemy
   - InteractObjects
+  - Medkit
+  - Tin
+  - Bottle
+  - CargadorPistol
+  - CargadorRifle
   layers:
   - Default
   - TransparentFX
