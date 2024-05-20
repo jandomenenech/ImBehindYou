@@ -18,8 +18,11 @@ public class Controlador : MonoBehaviourPunCallbacks
     private float tiempo;
     [SerializeField] private GameObject armas;
     private Animator animator;
+    [SerializeField]private Camera playerCamera;
+    [SerializeField]private Canvas playerCanvas;
 
-    
+
+
     Vector3 inicial;
     void Start()
     {
@@ -28,26 +31,40 @@ public class Controlador : MonoBehaviourPunCallbacks
         animator = GetComponent<Animator>();
         inicial = camara.transform.position;
         rb = GetComponent<Rigidbody>();
+
+
+        if (photonView.IsMine)
+        {
+            playerCamera.gameObject.SetActive(true);
+            playerCanvas.gameObject.SetActive(true);
+        }
+        else
+        {
+            playerCamera.gameObject.SetActive(false);
+            playerCanvas.gameObject.SetActive(false);
+        }
     }
 
     void Update()
     {
-        
+        if (photonView.IsMine)
+        {
 
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-        Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
-        rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
+            float moveX = Input.GetAxis("Horizontal");
+            float moveZ = Input.GetAxis("Vertical");
+            Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
+            rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
 
-       
 
-        gahterObject();
-        Run(Walk());
 
-        animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
-        rifle.disparar(animator);
-        rifle.recargar(animator);
-        rifle.animarCuchillo(animator);
+            gahterObject();
+            Run(Walk());
+
+            animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
+            rifle.disparar(animator);
+            rifle.recargar(animator);
+            rifle.animarCuchillo(animator);
+        }
 
     }
 
