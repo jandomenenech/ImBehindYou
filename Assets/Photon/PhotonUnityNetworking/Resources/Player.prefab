@@ -3999,8 +3999,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  animator: {fileID: 404975331357009683}
   healthText: {fileID: 6328933665852922616}
   inv: {fileID: 424162818722627894}
+  player: {fileID: 6074516707761463905}
 --- !u!114 &9006733959037883649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4492,6 +4494,9 @@ MonoBehaviour:
   - {fileID: 6232437369039261009}
   - {fileID: 8311282835385060858}
   animator: {fileID: 404975331357009683}
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
+  leftElbowTarget: {fileID: 0}
 --- !u!54 &863339709083332523
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7995,15 +8000,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a39ef5bc6d65dd841b805b98e5f19a49, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.001
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a39ef5bc6d65dd841b805b98e5f19a49, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.001
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a39ef5bc6d65dd841b805b98e5f19a49, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.001
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a39ef5bc6d65dd841b805b98e5f19a49, type: 3}
       propertyPath: m_LocalPosition.x

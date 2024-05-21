@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
 
 public class HealthSystem : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
+    [SerializeField] private Animator animator;
 
     public TextMeshProUGUI healthText;
 
     [SerializeField] private Inventario inv;
+    [SerializeField] private GameObject player;
+
 
 
 
@@ -24,28 +28,26 @@ public class HealthSystem : MonoBehaviour
 
     void Update()
     {
-
+        estasVivo();
         if (Input.GetKeyDown(KeyCode.P))
         {
             DecreaseHealth(12);
         }
         UseMedkit();
         UseTin();
+        UpdateHealthText();
     }
 
-    void DecreaseHealth(int amount)
+    public void DecreaseHealth(int amount)
     {
         currentHealth -= amount;
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             currentHealth = 0;
+            
         }
         UpdateHealthText();
 
-        if (currentHealth == 0)
-        {
-            EndGame();
-        }
     }
 
     void UpdateHealthText()
@@ -57,7 +59,9 @@ public class HealthSystem : MonoBehaviour
 
     void EndGame()
     {
-        Debug.Log("Game Over");
+        animator.SetTrigger("Muerte");
+        DisablePlayerScripts();
+        
     }
 
 
@@ -105,6 +109,14 @@ void UseMedkit()
    
 }
 
+    void estasVivo()
+    {
+        if(currentHealth <= 0)
+        {
+            EndGame();
+        }
+    }
+
 
 void UseTin()
 {
@@ -136,6 +148,17 @@ void UseTin()
         }
    
 }
+    void DisablePlayerScripts()
+    {
+        MonoBehaviour[] scripts = player.GetComponentsInChildren<MonoBehaviour>();
 
+        foreach (MonoBehaviour script in scripts)
+        {
+            if (script != this) // No desactivar este script
+            {
+                script.enabled = false;
+            }
+        }
+    }
 
 }

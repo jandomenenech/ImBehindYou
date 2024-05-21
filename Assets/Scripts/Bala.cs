@@ -7,7 +7,6 @@ public class Bala : MonoBehaviour
     public GameObject balaPrefab;
     public Transform puntoDeDisparo;
     public float fuerzaDeDisparo = 10f;
-    private float tiempo;
 
 
     private void Start()
@@ -38,7 +37,17 @@ public class Bala : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Enemigo Golpeado");
+
+            HealthSystem playerHealth = collision.gameObject.GetComponent<HealthSystem>();
+            if (playerHealth != null)
+            {
+                playerHealth.DecreaseHealth(30); 
+            }
+
             Destroy(gameObject);
+            
+
+
         }
     }
 }

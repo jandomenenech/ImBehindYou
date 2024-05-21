@@ -31,8 +31,6 @@ public class Controlador : MonoBehaviourPunCallbacks
         animator = GetComponent<Animator>();
         inicial = camara.transform.position;
         rb = GetComponent<Rigidbody>();
-
-
         if (photonView.IsMine)
         {
             playerCamera.gameObject.SetActive(true);
@@ -43,13 +41,14 @@ public class Controlador : MonoBehaviourPunCallbacks
             playerCamera.gameObject.SetActive(false);
             playerCanvas.gameObject.SetActive(false);
         }
+
     }
 
     void Update()
     {
+
         if (photonView.IsMine)
         {
-
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
             Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
