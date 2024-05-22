@@ -50,7 +50,7 @@ public class HealthSystem : MonoBehaviour
 
     }
 
-    void UpdateHealthText()
+    public void UpdateHealthText()
     {
         healthText.text = currentHealth.ToString();
     }

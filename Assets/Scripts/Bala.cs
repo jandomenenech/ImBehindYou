@@ -7,6 +7,7 @@ public class Bala : MonoBehaviour
     public GameObject balaPrefab;
     public Transform puntoDeDisparo;
     public float fuerzaDeDisparo = 10f;
+    public GameObject player;
 
 
     private void Start()
@@ -15,8 +16,12 @@ public class Bala : MonoBehaviour
     }
     public void Disparar()
     {
-        Quaternion rotacion = Quaternion.Euler(90f, 90f, 0f);
-        GameObject bala = Instantiate(balaPrefab, puntoDeDisparo.position,rotacion);
+        Quaternion rotacion = Quaternion.Euler(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z);
+        Vector3 offset = new Vector3(0f, 0f, 3f); 
+
+        Vector3 posicionBala = puntoDeDisparo.position + puntoDeDisparo.forward * offset.z;
+
+        GameObject bala = Instantiate(balaPrefab, posicionBala, rotacion);
 
         Rigidbody balaRigidbody = bala.GetComponent<Rigidbody>();
 
@@ -32,22 +37,14 @@ public class Bala : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.collider.tag == "Player")
         {
-            Debug.Log("Enemigo Golpeado");
-
-            HealthSystem playerHealth = collision.gameObject.GetComponent<HealthSystem>();
-            if (playerHealth != null)
-            {
-                playerHealth.DecreaseHealth(30); 
-            }
-
             Destroy(gameObject);
-            
-
 
         }
     }
+
+
 }

@@ -221,7 +221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.010182, y: -4.1483}
+  m_AnchoredPosition: {x: -164, y: -4.1483}
   m_SizeDelta: {x: 1101, y: 92.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &27638160
@@ -246,8 +246,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: I'm Behind You
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 33f26ac2f8a9e8b439e26f72bccce642, type: 2}
-  m_sharedMaterial: {fileID: -5361155044072035201, guid: 33f26ac2f8a9e8b439e26f72bccce642, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 607c098b6187b194eae2d3fba145c7f6, type: 2}
+  m_sharedMaterial: {fileID: 5540755736566847451, guid: 607c098b6187b194eae2d3fba145c7f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -309,10 +309,10 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -326.27173, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &27638161

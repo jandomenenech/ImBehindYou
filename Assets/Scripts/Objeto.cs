@@ -64,16 +64,19 @@ public class Objeto : MonoBehaviour
                     itemsCaja.objetosCaja();
                     cajainv.SetActive(true);
                     inv.mostrarInventario(itemsCaja.objetoCaja);
-                    inventarioPlayer.activarInventario();
+                    inventarioPlayer.mostrarInventario();
+                    Cursor.lockState = CursorLockMode.None;
 
                 }
             }
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.I))
+            {
+                inventarioPlayer.cerrarInventario();
+                cajainv.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            cajainv?.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        
     }
 
     void recogerObjeto()
