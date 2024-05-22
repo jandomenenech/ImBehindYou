@@ -6,13 +6,14 @@ using TMPro;
 using UnityEngine.UI;
 using WebSocketSharp;
 using System;
+using JetBrains.Annotations;
 
 public class Inventario : MonoBehaviour
 {
     [SerializeField] public List<RawImage> nombreInventario;
     [SerializeField] public List<GameObject> inventario;
     private Transform personaje;
-    [SerializeField] private GameObject panelInventario;
+    [SerializeField] public GameObject panelInventario;
     [SerializeField] 
     private bool inventarioActivo;
     int contador;
@@ -101,14 +102,12 @@ public class Inventario : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I) && inventarioActivo == false)
         {
-            Cursor.lockState = CursorLockMode.None;  
-            inventarioActivo = true;
-            panelInventario.SetActive(inventarioActivo);
+            Cursor.lockState = CursorLockMode.None;
+            mostrarInventario();
         }
         else if((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape)) && inventarioActivo == true)
         {
-            inventarioActivo=false;
-            panelInventario.SetActive(false);
+            cerrarInventario();
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
@@ -126,5 +125,17 @@ public class Inventario : MonoBehaviour
                 t.color = new Color(255,255,255,1f);
             }
     }
+
 }
+    public void mostrarInventario()
+    {
+        inventarioActivo = true;
+        panelInventario.SetActive(inventarioActivo);
+    }
+
+    public void cerrarInventario()
+    {
+        inventarioActivo = false;
+        panelInventario.SetActive(false);
+    }
 }
