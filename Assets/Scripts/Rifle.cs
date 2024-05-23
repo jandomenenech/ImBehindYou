@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
 public class Rifle : MonoBehaviour
 {
+    public GameObject camara;
     public bool pistola;
     public bool rifle;
     public bool cuchillo;
@@ -48,11 +50,17 @@ public class Rifle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && tiempo + 0.4f < Time.time && balas > 0)
         {
-            anim.SetTrigger("Disparar");
-            bala.Disparar();
-            Debug.Log("Disparo");
-            tiempo = Time.time;
-            balas -= 1;
+            if (bala.photonView != null)
+            {
+                anim.SetTrigger("Disparar");
+                Vector3 posicionDisparo = camara.transform.position + camara.transform.forward * 1.0f;
+                Quaternion rotacionDisparo = camara.transform.rotation;
+                bala.photonView.RPC("Disparar", RpcTarget.All, posicionDisparo, rotacionDisparo);
+                Debug.Log("Disparo");
+                tiempo = Time.time;
+                balas -= 1;
+            }
+            
         }
     }
     public void recargar(Animator ani)
@@ -80,7 +88,9 @@ public class Rifle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && tiempo + 0.4f < Time.time && balasRifle > 0)
         {
             anim.SetTrigger("Disparar");
-            bala.Disparar();
+            Vector3 posicionDisparo = camara.transform.position + camara.transform.forward * 1.0f;
+            Quaternion rotacionDisparo = camara.transform.rotation;
+            bala.photonView.RPC("Disparar", RpcTarget.All, posicionDisparo, rotacionDisparo);
             Debug.Log("Disparo");
             tiempo = Time.time;
             balasRifle -= 1;

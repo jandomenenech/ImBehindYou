@@ -1,33 +1,36 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bala : MonoBehaviour
+public class Bala : MonoBehaviourPun
 {
     public GameObject balaPrefab;
-    public Transform puntoDeDisparo;
+    public GameObject puntoDeDisparo;
     public float fuerzaDeDisparo = 10f;
-    public GameObject player;
 
 
-    private void Start()
+    [PunRPC]
+    public void Disparar(Vector3 position, Quaternion rotation)
     {
+        
+     
+        Quaternion rotacion = rotation;
 
-    }
-    public void Disparar()
-    {
-        Quaternion rotacion = Quaternion.Euler(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z);
-        Vector3 offset = new Vector3(0f, 0f, 3f); 
 
-        Vector3 posicionBala = puntoDeDisparo.position + puntoDeDisparo.forward * offset.z;
+        Vector3 posicionBala = position;
 
-        GameObject bala = Instantiate(balaPrefab, posicionBala, rotacion);
+
+        GameObject bala = PhotonNetwork.Instantiate(balaPrefab.name, posicionBala, rotacion);
+
 
         Rigidbody balaRigidbody = bala.GetComponent<Rigidbody>();
 
         if (balaRigidbody != null)
         {
-            balaRigidbody.AddForce(puntoDeDisparo.forward * fuerzaDeDisparo, ForceMode.Impulse);
+
+            balaRigidbody.AddForce(transform.transform.forward * fuerzaDeDisparo, ForceMode.Impulse);
+
 
             Destroy(bala, 5f);
         }
@@ -37,13 +40,14 @@ public class Bala : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Player")
+       /* if (collision.collider.tag == "Player")
         {
             Destroy(gameObject);
 
-        }
+        }*/
     }
 
 

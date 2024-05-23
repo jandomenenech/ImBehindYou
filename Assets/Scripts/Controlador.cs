@@ -9,7 +9,6 @@ public class Controlador : MonoBehaviourPunCallbacks
     public float moveSpeed = 0f;
     public float mouseSensitivity = 100f;
 
-    private float verticalRotation = 0f;
     private Rigidbody rb;
 
     [SerializeField] private GameObject camara;
@@ -69,7 +68,9 @@ public class Controlador : MonoBehaviourPunCallbacks
                 gahterObject();
                 Run(Walk());
                 animator.SetFloat("walk", Mathf.Clamp01(moveSpeed));
+
                 rifle.disparar(animator);
+                
                 rifle.recargar(animator);
                 rifle.animarCuchillo(animator);
             }
@@ -130,5 +131,7 @@ public class Controlador : MonoBehaviourPunCallbacks
         }
 
     }
- 
+    
+
+
 }

@@ -8,7 +8,7 @@ using Photon.Pun;
 public class HealthSystem : MonoBehaviour
 {
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
     [SerializeField] private Animator animator;
 
     public TextMeshProUGUI healthText;

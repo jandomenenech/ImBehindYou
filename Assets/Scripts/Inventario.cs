@@ -54,7 +54,7 @@ public class Inventario : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("No va");
+                   
                 }
             }
             contador = 0;
