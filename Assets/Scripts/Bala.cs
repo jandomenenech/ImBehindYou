@@ -1,38 +1,21 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Bala : MonoBehaviourPun
+public class Bala : MonoBehaviourPunCallbacks
 {
     public GameObject balaPrefab;
-    public GameObject puntoDeDisparo;
     public float fuerzaDeDisparo = 10f;
-
 
     [PunRPC]
     public void Disparar(Vector3 position, Quaternion rotation)
     {
-        
-     
-        Quaternion rotacion = rotation;
-
-
-        Vector3 posicionBala = position;
-
-
-        GameObject bala = PhotonNetwork.Instantiate(balaPrefab.name, posicionBala, rotacion);
-
+        GameObject bala = PhotonNetwork.Instantiate(balaPrefab.name, position, rotation);
 
         Rigidbody balaRigidbody = bala.GetComponent<Rigidbody>();
-
         if (balaRigidbody != null)
         {
-
-            balaRigidbody.AddForce(transform.transform.forward * fuerzaDeDisparo, ForceMode.Impulse);
-
-
-            Destroy(bala, 5f);
+            balaRigidbody.AddForce(bala.transform.forward * fuerzaDeDisparo, ForceMode.Impulse);
+            Destroy(bala, 5f); 
         }
         else
         {
@@ -40,15 +23,33 @@ public class Bala : MonoBehaviourPun
         }
     }
 
-
-private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-       /* if (collision.collider.tag == "Player")
+        if (collision.collider.CompareTag("Player"))
         {
-            Destroy(gameObject);
-
-        }*/
+            if (photonView.IsMine)
+            {
+                PhotonView targetView = collision.collider.GetComponent<PhotonView>();
+                if (targetView != null)
+                {
+                    photonView.RPC("ApplyDamage", RpcTarget.All, targetView.ViewID, 30);
+                }
+            }
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 
-
+    [PunRPC]
+    public void ApplyDamage(int viewID, int damage)
+    {
+        PhotonView targetView = PhotonView.Find(viewID);
+        if (targetView != null)
+        {
+            HealthSystem healthSystem = targetView.GetComponent<HealthSystem>();
+            if (healthSystem != null)
+            {
+                healthSystem.DecreaseHealth(damage);
+            }
+        }
+    }
 }
