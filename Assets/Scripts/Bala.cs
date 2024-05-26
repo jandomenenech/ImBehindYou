@@ -15,7 +15,7 @@ public class Bala : MonoBehaviourPunCallbacks
         if (balaRigidbody != null)
         {
             balaRigidbody.AddForce(bala.transform.forward * fuerzaDeDisparo, ForceMode.Impulse);
-            Destroy(bala, 5f); 
+            Destroy(bala, 5f);
         }
         else
         {
@@ -34,8 +34,8 @@ public class Bala : MonoBehaviourPunCallbacks
                 {
                     photonView.RPC("ApplyDamage", RpcTarget.All, targetView.ViewID, 30);
                 }
+                PhotonNetwork.Destroy(gameObject);
             }
-            PhotonNetwork.Destroy(gameObject);
         }
     }
 
