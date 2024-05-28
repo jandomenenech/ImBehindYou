@@ -12,6 +12,9 @@ TagManager:
   - CargadorPistol
   - CargadorRifle
   - Bala
+  - Angle
+  - Rifle
+  - Knife
   layers:
   - Default
   - TransparentFX

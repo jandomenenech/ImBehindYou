@@ -1,29 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using UnityEngine.UI;
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem : MonoBehaviourPunCallbacks, IPunObservable
 {
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
     [SerializeField] private Animator animator;
 
     public TextMeshProUGUI healthText;
 
     [SerializeField] private Inventario inv;
     [SerializeField] private GameObject player;
-
-
-
-
+    [SerializeField] private GameObject derrota;
+    [SerializeField] private Rifle rifle;
+    
+    public GameManager gameManager;
     void Start()
     {
         currentHealth = maxHealth;
-
-
+        UpdateHealthText();
     }
 
     void Update()
@@ -35,19 +32,29 @@ public class HealthSystem : MonoBehaviour
         }
         UseMedkit();
         UseTin();
-        UpdateHealthText();
     }
 
+    [PunRPC]
     public void DecreaseHealth(int amount)
     {
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            
+            photonView.RPC("PlayDeathAnimation", RpcTarget.All);
+           
         }
         UpdateHealthText();
+    }
 
+    [PunRPC]
+    void PlayDeathAnimation()
+    {
+        animator.SetTrigger("Muerte");
+        if (photonView.IsMine)
+        {
+            DisablePlayerScripts();
+        }
     }
 
     public void UpdateHealthText()
@@ -55,110 +62,105 @@ public class HealthSystem : MonoBehaviour
         healthText.text = currentHealth.ToString();
     }
 
-
-
-    void EndGame()
+    public void IncreaseHealth(int amount)
     {
-        animator.SetTrigger("Muerte");
-        DisablePlayerScripts();
-        
-    }
-
-
-
-    void IncreaseHealth(int amount)
-    {
-    currentHealth += amount;
-    if(currentHealth > maxHealth)
-    {
-        currentHealth = maxHealth;
-    }
-    UpdateHealthText();
-    }
-
-
-void UseMedkit()
-{
-    int contador = 0;
-    
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
         {
+            currentHealth = maxHealth;
+        }
+        UpdateHealthText();
+    }
 
-             foreach(GameObject obj in inv.inventario)
+    void UseMedkit()
+    {
+        int contador = 0;
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            foreach (GameObject obj in inv.inventario)
             {
-                if(obj.CompareTag("Medkit")){
-                   IncreaseHealth(40);
-                   inv.inventario.Remove(obj);
-                   Destroy(obj);
-                   foreach (GameObject g  in inv.inventario)
-                   {
-
-                    if(g.tag.Equals("Medkit") && contador != 1)
+                if (obj.CompareTag("Medkit"))
+                {
+                    IncreaseHealth(40);
+                    inv.inventario.Remove(obj);
+                    Destroy(obj);
+                    foreach (GameObject g in inv.inventario)
                     {
-                        contador = 1;
+                        if (g.tag.Equals("Medkit") && contador != 1)
+                        {
+                            contador = 1;
+                        }
                     }
-                   }
-                   break;
+                    break;
                 }
             }
-
         }
-        else {
-
-        }
-   
-}
+    }
 
     void estasVivo()
     {
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            EndGame();
+             derrota.SetActive(true);
+            photonView.RPC("PlayDeathAnimation", RpcTarget.All);
         }
     }
 
-
-void UseTin()
-{
-    int contador = 0;
-    
-        if (Input.GetKeyDown(KeyCode.Alpha6))
+    void UseTin()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-
-             foreach(GameObject obj in inv.inventario)
+            for (int i = 0; i < inv.inventario.Count; i++)
             {
-                if(obj.CompareTag("Tin")){
-                   IncreaseHealth(15);
-                   inv.inventario.Remove(obj);
-                   Destroy(obj);
-                   foreach (GameObject i in inv.inventario)
-                   {
+                GameObject obj = inv.inventario[i];
+                if (obj.CompareTag("Tin"))
+                {
+                    IncreaseHealth(15);
+                    inv.inventario.RemoveAt(i);
+                    Destroy(obj);
 
-                    if(i.tag.Equals("Tin") && contador != 1)
+                    
+                    for (int j = 0; j < inv.nombreInventario.Count; j++)
                     {
-                        contador = 1;
+                        RawImage g = inv.nombreInventario[j];
+                        if (g.texture != null && g.texture.name.Equals("tin"))
+                        {
+                            g.texture = null;
+                            g.color = new Color(255, 255, 255, 0f); 
+                            break;
+                        }
                     }
-                   }
-                   break;
+                    break;
                 }
             }
-
-        }
-        else {
-        }
-   
-}
-    void DisablePlayerScripts()
-    {
-        MonoBehaviour[] scripts = player.GetComponentsInChildren<MonoBehaviour>();
-
-        foreach (MonoBehaviour script in scripts)
-        {
-            if (script != this) // No desactivar este script
-            {
-                script.enabled = false;
-            }
         }
     }
 
+
+    void DisablePlayerScripts()
+    {
+        MonoBehaviour scripts = player.GetComponent<Controlador>();
+        scripts.enabled = false;
+        gameManager.obtenerObjetos();
+        rifle.enabled = false;
+        
+        
+
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // Enviar datos
+            stream.SendNext(currentHealth);
+        }
+        else
+        {
+            // Recibir datos
+            currentHealth = (int)stream.ReceiveNext();
+            UpdateHealthText();
+        }
+    }
 }

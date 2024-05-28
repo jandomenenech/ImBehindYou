@@ -5,6 +5,7 @@ public class HeadbandScript : MonoBehaviour
 {
     public Light headLight; // Reference to the Light component
     public TextMeshProUGUI batteryText; // Reference to the TextMeshPro component
+    public Camera camara; // Reference to the Camera component
 
     private bool isLightOn = false;
     private float lastToggleTime;
@@ -29,6 +30,12 @@ public class HeadbandScript : MonoBehaviour
 
         if (batteryText == null)
         {
+            Debug.LogError("No TextMeshPro component assigned to HeadbandController.");
+        }
+
+        if (camara == null)
+        {
+            Debug.LogError("No Camera component assigned to HeadbandController.");
         }
     }
 
@@ -43,6 +50,9 @@ public class HeadbandScript : MonoBehaviour
         // Check if the light is on
         if (isLightOn)
         {
+            // Make the light point in the direction the camera is looking
+            headLight.transform.rotation = camara.transform.rotation;
+
             // Check if it's time to turn off the light
             if (Time.time - lastToggleTime >= batteryLife)
             {
@@ -57,7 +67,7 @@ public class HeadbandScript : MonoBehaviour
 
             // Update battery countdown text
             remainingBattery = batteryLife - (Time.time - lastToggleTime);
-            batteryText.text = "Battery left:" + Mathf.RoundToInt(remainingBattery) + " s";
+            batteryText.text = "Battery left: " + Mathf.RoundToInt(remainingBattery) + " s";
 
             // Debug log for battery life less than 40 seconds
             if (remainingBattery <= 40f)
@@ -95,7 +105,7 @@ public class HeadbandScript : MonoBehaviour
         headLight.enabled = !headLight.enabled;
         blinkCount++;
 
-        // If blinked 4 times, stop blinking8
+        // If blinked 4 times, stop blinking
         if (blinkCount >= 4)
         {
             CancelInvoke("BlinkLight");
@@ -103,3 +113,4 @@ public class HeadbandScript : MonoBehaviour
         }
     }
 }
+

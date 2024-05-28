@@ -1,34 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public class Bala : MonoBehaviour
+public class Bala : MonoBehaviourPunCallbacks
 {
     public GameObject balaPrefab;
-    public Transform puntoDeDisparo;
     public float fuerzaDeDisparo = 10f;
-    public GameObject player;
 
-
-    private void Start()
+    [PunRPC]
+    public void Disparar(Vector3 position, Quaternion rotation)
     {
-
-    }
-    public void Disparar()
-    {
-        Quaternion rotacion = Quaternion.Euler(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z);
-        Vector3 offset = new Vector3(0f, 0f, 3f); 
-
-        Vector3 posicionBala = puntoDeDisparo.position + puntoDeDisparo.forward * offset.z;
-
-        GameObject bala = Instantiate(balaPrefab, posicionBala, rotacion);
+        GameObject bala = PhotonNetwork.Instantiate(balaPrefab.name, position, rotation);
 
         Rigidbody balaRigidbody = bala.GetComponent<Rigidbody>();
-
         if (balaRigidbody != null)
         {
-            balaRigidbody.AddForce(puntoDeDisparo.forward * fuerzaDeDisparo, ForceMode.Impulse);
-
+            balaRigidbody.AddForce(bala.transform.forward * fuerzaDeDisparo, ForceMode.Impulse);
             Destroy(bala, 5f);
         }
         else
@@ -39,12 +25,31 @@ public class Bala : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Player")
+        if (collision.collider.CompareTag("Player"))
         {
-            Destroy(gameObject);
-
+            if (photonView.IsMine)
+            {
+                PhotonView targetView = collision.collider.GetComponent<PhotonView>();
+                if (targetView != null)
+                {
+                    photonView.RPC("ApplyDamage", RpcTarget.All, targetView.ViewID, 30);
+                }
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
     }
 
-
+    [PunRPC]
+    public void ApplyDamage(int viewID, int damage)
+    {
+        PhotonView targetView = PhotonView.Find(viewID);
+        if (targetView != null)
+        {
+            HealthSystem healthSystem = targetView.GetComponent<HealthSystem>();
+            if (healthSystem != null)
+            {
+                healthSystem.DecreaseHealth(damage);
+            }
+        }
+    }
 }

@@ -112,7 +112,7 @@ public void IncreaseStamina(float amount)
     void useBottle()
     {
      int contador  = 0;
-     if(Input.GetKeyDown(KeyCode.Alpha5))
+     if(Input.GetKeyDown(KeyCode.Alpha3))
      {
         foreach(GameObject obj in inv.inventario)
         {

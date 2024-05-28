@@ -18,7 +18,7 @@ public class PlayerMuerte : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Bala")
+        if (collision.collider.gameObject.tag == "Bala")
         {
             if (healthSystem != null)
             {

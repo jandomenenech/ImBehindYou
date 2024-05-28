@@ -27,15 +27,15 @@ public class MostrarInvCaja : MonoBehaviour
         objetos.Clear();
         foreach (GameObject a in lista)
         {
-            if (a.tag.Equals("Medkit"))
+            if (a.tag.Equals("Rifle"))
             {
                 objetos.Add(items[0]);
             }
-            else if (a.tag.Equals("Bottle"))
+            else if (a.tag.Equals("Knife"))
             {
                 objetos.Add(items[1]);
             }
-            else if (a.tag.Equals("CargadorPistol"))
+            else if (a.tag.Equals("Angle"))
             {
                 objetos.Add(items[2]);
             }

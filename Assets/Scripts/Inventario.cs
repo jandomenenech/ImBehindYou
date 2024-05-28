@@ -54,7 +54,7 @@ public class Inventario : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("No va");
+                   
                 }
             }
             contador = 0;
@@ -66,16 +66,12 @@ public class Inventario : MonoBehaviour
     {
         foreach (RawImage t in nombreInventario)
         {
-            if (t.texture!=null)
+            if (t.texture != null && t.texture.name == "cargadorR")
             {
-                if (t.texture.name == "cargadorR")
-                {
-                    t.texture = null;
-                    return true;
-                }
+                t.texture = null;
+                t.color = new Color(255, 255, 255, 0f);
+                return true;
             }
-          
-            
         }
         return false;
     }
@@ -84,19 +80,16 @@ public class Inventario : MonoBehaviour
     {
         foreach (RawImage t in nombreInventario)
         {
-            if (t.texture !=null)
+            if (t.texture != null && t.texture.name == "cargadorP")
             {
-                if (t.texture.name == "cargadorP")
-                {
-                    t.texture = null;
-                    return true;
-
-                }
+                t.texture = null;
+                t.color = new Color(255, 255, 255, 0f);
+                return true;
             }
-           
         }
         return false;
     }
+
 
     public void activarInventario()
     {
