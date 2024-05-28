@@ -13,7 +13,10 @@ public class HealthSystem : MonoBehaviourPunCallbacks, IPunObservable
 
     [SerializeField] private Inventario inv;
     [SerializeField] private GameObject player;
-
+    [SerializeField] private GameObject derrota;
+    [SerializeField] private Rifle rifle;
+    
+    public GameManager gameManager;
     void Start()
     {
         currentHealth = maxHealth;
@@ -39,6 +42,7 @@ public class HealthSystem : MonoBehaviourPunCallbacks, IPunObservable
         {
             currentHealth = 0;
             photonView.RPC("PlayDeathAnimation", RpcTarget.All);
+           
         }
         UpdateHealthText();
     }
@@ -72,7 +76,7 @@ public class HealthSystem : MonoBehaviourPunCallbacks, IPunObservable
     {
         int contador = 0;
 
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             foreach (GameObject obj in inv.inventario)
             {
@@ -98,13 +102,14 @@ public class HealthSystem : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (currentHealth <= 0)
         {
+             derrota.SetActive(true);
             photonView.RPC("PlayDeathAnimation", RpcTarget.All);
         }
     }
 
     void UseTin()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha6))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             for (int i = 0; i < inv.inventario.Count; i++)
             {
@@ -135,15 +140,13 @@ public class HealthSystem : MonoBehaviourPunCallbacks, IPunObservable
 
     void DisablePlayerScripts()
     {
-        MonoBehaviour[] scripts = player.GetComponentsInChildren<MonoBehaviour>();
+        MonoBehaviour scripts = player.GetComponent<Controlador>();
+        scripts.enabled = false;
+        gameManager.obtenerObjetos();
+        rifle.enabled = false;
+        
+        
 
-        foreach (MonoBehaviour script in scripts)
-        {
-            if (script != this) // No desactivar este script
-            {
-                script.enabled = false;
-            }
-        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

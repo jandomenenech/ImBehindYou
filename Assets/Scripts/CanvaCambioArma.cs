@@ -25,13 +25,5 @@ public class CanvaCambioArma : MonoBehaviour
         {
             image.texture = imagenes[0];
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            image.texture = imagenes[1];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            image.texture = imagenes[2];
-        }
     }
 }

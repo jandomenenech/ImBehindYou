@@ -4,6 +4,7 @@ using Photon.Pun;
 using UnityEngine;
 using Photon.Realtime;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
@@ -11,6 +12,18 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     private string roomName = "MyRoom";
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
 
@@ -53,7 +66,17 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         base.OnMasterClientSwitched(newMasterClient);
     }
+    public override void OnDisconnected(Photon.Realtime.DisconnectCause cause)
+    {
+        base.OnDisconnected(cause);
+        Debug.Log("Te has desconectado");
+        SceneManager.LoadScene(0);
+    }
 
+    public void DisconnectAndGoToMenu()
+    {
+        PhotonNetwork.Disconnect();
+    }
 
 
 }

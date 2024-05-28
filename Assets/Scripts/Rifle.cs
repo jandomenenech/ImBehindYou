@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Photon.Pun;
+using UnityEngine.Audio;
 
 public class Rifle : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -19,15 +20,21 @@ public class Rifle : MonoBehaviourPunCallbacks, IPunObservable
     public Inventario i;
     [SerializeField] private Bala bala;
     [SerializeField] private Controlador controlador;
+    public AudioClip sonidoDisparo;
+    private AudioSource audioSource;
 
     void Start()
     {
         tiempo = Time.time;
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     void Update()
     {
-        armaEquipada();
         if (controlador.canControl)
         {
             if (rifle)
@@ -47,7 +54,6 @@ public class Rifle : MonoBehaviourPunCallbacks, IPunObservable
                 sumarBalasRifle();
             }
         }
-
     }
 
     public void disparar(Animator anim)
@@ -55,16 +61,34 @@ public class Rifle : MonoBehaviourPunCallbacks, IPunObservable
         if (Input.GetKeyDown(KeyCode.Mouse0) && tiempo + 0.4f < Time.time && balas > 0)
         {
             anim.SetTrigger("Disparar");
-            photonView.RPC("DispararBala", RpcTarget.All, camara.transform.position + camara.transform.forward * 1.5f, camara.transform.rotation);
+            Vector3 posicionDisparo = camara.transform.position + camara.transform.forward * 1.5f;
+            Quaternion rotacionDisparo = camara.transform.rotation;
+            photonView.RPC("DispararBala", RpcTarget.All, posicionDisparo, rotacionDisparo);
             tiempo = Time.time;
             balas -= 1;
+            ReproducirSonidoDisparo(gameObject.transform.position);
+
         }
     }
 
     [PunRPC]
     public void DispararBala(Vector3 posicionDisparo, Quaternion rotacionDisparo)
     {
+        // Código para crear y disparar la bala
         bala.Disparar(posicionDisparo, rotacionDisparo);
+
+
+    }
+
+    private void ReproducirSonidoDisparo(Vector3 posicion)
+    {
+        if (sonidoDisparo != null)
+        {
+            audioSource.transform.position = posicion;
+            audioSource.clip = sonidoDisparo;
+            audioSource.spatialBlend = 1.0f; // Esto asegura que el sonido sea 3D
+            audioSource.Play();
+        }
     }
 
     public void recargar(Animator ani)
@@ -84,9 +108,10 @@ public class Rifle : MonoBehaviourPunCallbacks, IPunObservable
                 maxBalas = 0;
             }
             tiempo = Time.time;
+            ReproducirSonidoDisparo(gameObject.transform.position);
         }
-
     }
+
     public void dispararRifle(Animator anim)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && tiempo + 0.4f < Time.time && balasRifle > 0)
@@ -94,12 +119,13 @@ public class Rifle : MonoBehaviourPunCallbacks, IPunObservable
             anim.SetTrigger("Disparar");
             Vector3 posicionDisparo = camara.transform.position + camara.transform.forward * 1.0f;
             Quaternion rotacionDisparo = camara.transform.rotation;
-            bala.Disparar(posicionDisparo, rotacionDisparo);
+            photonView.RPC("DispararBala", RpcTarget.All, posicionDisparo, rotacionDisparo);
             Debug.Log("Disparo");
             tiempo = Time.time;
             balasRifle -= 1;
         }
     }
+
     public void recargarRifle(Animator ani)
     {
         if (Input.GetKeyDown(KeyCode.R) && maxBalasRifle > 0 && tiempo + 0.8f < Time.time)
@@ -118,7 +144,6 @@ public class Rifle : MonoBehaviourPunCallbacks, IPunObservable
             }
             tiempo = Time.time;
         }
-
     }
 
     public void animarCuchillo(Animator animator)
@@ -128,6 +153,7 @@ public class Rifle : MonoBehaviourPunCallbacks, IPunObservable
             animator.SetTrigger("Inspeccion");
         }
     }
+
     public void sumarBalasRifle()
     {
         if (i.tengoCargadorPistol())
@@ -157,27 +183,6 @@ public class Rifle : MonoBehaviourPunCallbacks, IPunObservable
             balasRifle = (float)stream.ReceiveNext();
             maxBalas = (float)stream.ReceiveNext();
             maxBalasRifle = (float)stream.ReceiveNext();
-        }
-    }
-
-    public void armaEquipada()
-    {
-        if (gameObject.name.Equals("Pistol"))
-        {
-            pistola = true;
-            rifle = false;
-            cuchillo = false;
-        }
-        else if (gameObject.name.Equals("Rifle"))
-        {
-            rifle = true;
-            pistola = false;
-            cuchillo = false;
-        }
-        else if (gameObject.name.Equals("Knife")) {
-            rifle = false;
-            pistola = false;
-            cuchillo = true;
         }
     }
 }

@@ -14,8 +14,17 @@ public class ExtractionZone : MonoBehaviourPunCallbacks, IPunObservable
     public TMP_Text countdownText; // Reference to the TextMeshPro UI element
     public Animator ani;
     public GameObject cinematicCamera; // Camera used for the cinematic
+    public AudioClip alarmClip; // Reference to the alarm audio clip
+    private AudioSource audioSource; // Reference to the AudioSource component
 
     private bool didWin = false;
+
+    private void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = alarmClip;
+        audioSource.loop = true; // Set the audio to loop
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,6 +32,12 @@ public class ExtractionZone : MonoBehaviourPunCallbacks, IPunObservable
         {
             isCharacterInside = true;
             playerInsideView = other.GetComponent<PhotonView>();
+
+            // Play the alarm sound
+            if (audioSource != null && alarmClip != null)
+            {
+                audioSource.Play();
+            }
         }
     }
 
@@ -35,6 +50,12 @@ public class ExtractionZone : MonoBehaviourPunCallbacks, IPunObservable
             UpdateCountdownText();
             countdownText.gameObject.SetActive(false); // Clear countdown text when player exits
             playerInsideView = null;
+
+            // Stop the alarm sound
+            if (audioSource != null)
+            {
+                audioSource.Stop();
+            }
         }
     }
 
@@ -97,15 +118,11 @@ public class ExtractionZone : MonoBehaviourPunCallbacks, IPunObservable
             Debug.LogError("Cinematic camera is not assigned");
         }
         ani.SetTrigger("Fin");
-       
     }
 
     private void OnPlayableDirectorStopped()
     {
-       
-
         StartCoroutine(CallFinPartidaAfterDelay(5f));
-       
     }
 
     private IEnumerator CallFinPartidaAfterDelay(float delay)
@@ -117,12 +134,8 @@ public class ExtractionZone : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void SetGameResult()
     {
-          bool isLocalPlayerWinner = playerInsideView != null && playerInsideView.IsMine;
-          GameManager.Instance.FinPartida(isLocalPlayerWinner);
-
-        
-
-      
+        bool isLocalPlayerWinner = playerInsideView != null && playerInsideView.IsMine;
+        GameManager.Instance.FinPartida(isLocalPlayerWinner);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
